@@ -177,3 +177,8 @@ string dataString = "2023-11-10";
 DateTime data = Convert.ToDateTime(dataString);
 ```
 Estes são apenas alguns exemplos e existem outros métodos na classe Convert para lidar com diferentes tipos de dados. É importante notar que, assim como com o método Parse(), os métodos na classe Convert podem lançar exceções se a conversão não for possível. Se você precisar de uma abordagem mais segura, pode preferir usar métodos como TryParse() para evitar exceções em casos de conversão mal-sucedida.
+
+## Seção 7 - Operadores 
+### Operadores aritméticos
+![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/38731157-289c-4af2-8942-fb0dcc657884)
+
