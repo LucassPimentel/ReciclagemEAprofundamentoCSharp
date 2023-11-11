@@ -162,7 +162,7 @@ else
 ```
 **Isso ajuda a evitar exceções indesejadas em situações em que a string de entrada pode ser inválida para a conversão desejada.**  
 
-## Classe Convert
+### Classe Convert
 A classe Convert faz parte do namespace System e oferece métodos estáticos para converter valores entre diferentes tipos de dados. Essa classe é útil quando você precisa realizar conversões explícitas entre tipos primitivos ou converter valores de string para outros tipos de dados.  
 
 **ToByte(object value) e ToByte(string value):**  
