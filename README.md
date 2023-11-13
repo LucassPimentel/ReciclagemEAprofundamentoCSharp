@@ -291,3 +291,30 @@ int numero = 10;
 // Usando o operador ternário para determinar se o número é positivo
 string mensagem = (numero > 0) ? "Positivo" : "Não positivo";
  ```
+## Seção 10 - Estruturas de controle
+### Estrutura Switch-case
+A estrutura de controle switch em C# é usada quando você tem várias condições possíveis e deseja executar diferentes blocos de código com base no valor de uma expressão. Ela é uma alternativa mais limpa e legível do que uma série de instruções if-else aninhadas quando você está lidando com múltiplas possibilidades.
+``` 
+switch (expressao)
+{
+    case valor1:
+        // Código a ser executado se expressao for igual a valor1
+        break;
+
+    case valor2:
+        // Código a ser executado se expressao for igual a valor2
+        break;
+
+    case valor3:
+    case valor4:
+        // opção combinada, caso sejam valor3 e valor4 executam um comando, evitando duplicação de código.
+        break;
+
+    // Pode haver mais casos aqui...
+
+    default:
+        // Código a ser executado se nenhum dos casos anteriores for correspondido
+        break;
+}
+```
+**É importante notar que, após a execução de um bloco de código de um caso correspondente, a instrução break é usada para sair do switch. Se o break não for usado, a execução continuará nos casos seguintes, o que pode não ser desejado.**    
