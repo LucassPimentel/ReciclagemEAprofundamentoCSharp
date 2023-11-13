@@ -182,3 +182,13 @@ Estes são apenas alguns exemplos e existem outros métodos na classe Convert pa
 ### Operadores aritméticos
 ![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/38731157-289c-4af2-8942-fb0dcc657884)
 
+### Operadores de atribuição
+![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/9246103e-33ea-4435-9fec-922f1717b364)
+
+### Operadores de igualdade e relacionais
+![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/b6c80d2e-d1a2-4cd3-8483-3b496ae4f617)
+
+### Operadores lógicos
+![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/a0f5e2b1-6477-4f08-98e3-134ded038e8b)
+
+
