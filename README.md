@@ -196,25 +196,25 @@ Estes são apenas alguns exemplos e existem outros métodos na classe Convert pa
 Array unidimensional é uma estrutura de dados que armazena elementos do mesmo tipo em uma sequência contígua de memória. Ele fornece um meio eficiente de armazenar e acessar múltiplos valores usando um único nome de variável. 
 ``` 
 // Declaração e inicialização de um array de inteiros com 5 elementos
-        int[] meuArray = new int[5];
+int[] meuArray = new int[5];
 
-        // Atribuição de valores aos elementos do array
-        meuArray[0] = 10;
-        meuArray[1] = 20;
-        meuArray[2] = 30;
-        meuArray[3] = 40;
-        meuArray[4] = 50;
+// Atribuição de valores aos elementos do array
+meuArray[0] = 10;
+meuArray[1] = 20;
+meuArray[2] = 30;
+meuArray[3] = 40;
+meuArray[4] = 50;
 
-        // OU
+// OU
 
-        var meuArray = new int[]
-        {
-            10,
-            20,
-            30,
-            40,
-            50
-        }; 
+var meuArray = new int[]
+{
+    10,
+    20,
+    30,
+    40,
+    50
+}; 
 ```
 ### Matriz - Array bidimensional
 Array bidimensional é uma estrutura de dados que armazena elementos em duas dimensões. Isso significa que você pode acessar os elementos usando dois índices: um para a linha e outro para a coluna.
@@ -232,7 +232,11 @@ arrayBidimensional[1, 2] = 6;
 // OU
 
 //sintaxe de inicialização de array
-int[,] arrayBidimensional = { { 1, 2, 3 }, { 4, 5, 6 } };
+int[,] arrayBidimensional =
+{
+    { 1, 2, 3 },
+    { 4, 5, 6 }
+};
 ```
 **Independente da forma escolhida, você pode acessar os elementos usando a notação de colchetes duplos, como arrayBidimensional[linha, coluna].**        
 ``` 
@@ -241,7 +245,11 @@ int elemento = arrayBidimensional[0, 1]; // Obtendo o valor da primeira linha, s
 
 // OU
 
-int[,] arrayBidimensional = { { 1, 2, 3 }, { 4, 5, 6 } };
+int[,] arrayBidimensional =
+{
+    { 1, 2, 3 },
+    { 4, 5, 6 }
+};
 
 // Iterando sobre todos os elementos
 for (int i = 0; i < arrayBidimensional.GetLength(0); i++) // percorre as linhas
@@ -253,3 +261,33 @@ for (int i = 0; i < arrayBidimensional.GetLength(0); i++) // percorre as linhas
 }
 
 ```
+## Seção 9 - Estruturas condicionais
+### Estruturas condicionais simples
+Estruturas condicionais são usadas para tomar decisões com base em condições específicas.
+``` 
+// Exemplo de estrutura condicional simples
+
+// Definindo uma variável
+int numero = 10;
+
+// Verificando uma condição usando 'if'
+if (numero > 0)
+{
+    Console.WriteLine("O número é positivo.");
+}
+
+// O programa continua aqui após o bloco 'if'
+Console.WriteLine("Fim do programa.");
+```
+### Operador ternário
+O operador ternário é uma construção compacta e concisa em C# (e em muitas outras linguagens de programação) que permite expressar uma decisão em uma única linha. Ele é uma forma abreviada de escrever uma instrução if-else. 
+sintaxe: **condicao ? expressaoSeVerdadeira : expressaoSeFalsa;**    
+```
+// Exemplo de operador ternário
+
+// Definindo uma variável
+int numero = 10;
+
+// Usando o operador ternário para determinar se o número é positivo
+string mensagem = (numero > 0) ? "Positivo" : "Não positivo";
+ ```
