@@ -191,4 +191,65 @@ Estes são apenas alguns exemplos e existem outros métodos na classe Convert pa
 ### Operadores lógicos
 ![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/a0f5e2b1-6477-4f08-98e3-134ded038e8b)
 
+## Seção 8 - Coleções do tipo Array
+### Vetor - Array unidimensional
+Array unidimensional é uma estrutura de dados que armazena elementos do mesmo tipo em uma sequência contígua de memória. Ele fornece um meio eficiente de armazenar e acessar múltiplos valores usando um único nome de variável. 
+``` 
+// Declaração e inicialização de um array de inteiros com 5 elementos
+        int[] meuArray = new int[5];
 
+        // Atribuição de valores aos elementos do array
+        meuArray[0] = 10;
+        meuArray[1] = 20;
+        meuArray[2] = 30;
+        meuArray[3] = 40;
+        meuArray[4] = 50;
+
+        // OU
+
+        var meuArray = new int[]
+        {
+            10,
+            20,
+            30,
+            40,
+            50
+        }; 
+```
+### Matriz - Array bidimensional
+Array bidimensional é uma estrutura de dados que armazena elementos em duas dimensões. Isso significa que você pode acessar os elementos usando dois índices: um para a linha e outro para a coluna.
+```
+int[,] arrayBidimensional = new int[2, 3];
+
+// Inicializar os elementos individualmente
+arrayBidimensional[0, 0] = 1;
+arrayBidimensional[0, 1] = 2;
+arrayBidimensional[0, 2] = 3;
+arrayBidimensional[1, 0] = 4;
+arrayBidimensional[1, 1] = 5;
+arrayBidimensional[1, 2] = 6;
+
+// OU
+
+//sintaxe de inicialização de array
+int[,] arrayBidimensional = { { 1, 2, 3 }, { 4, 5, 6 } };
+```
+**Independente da forma escolhida, você pode acessar os elementos usando a notação de colchetes duplos, como arrayBidimensional[linha, coluna].**        
+``` 
+// Acessando um elemento específico
+int elemento = arrayBidimensional[0, 1]; // Obtendo o valor da primeira linha, segunda coluna (índices 0 e 1)
+
+// OU
+
+int[,] arrayBidimensional = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+// Iterando sobre todos os elementos
+for (int i = 0; i < arrayBidimensional.GetLength(0); i++) // percorre as linhas
+{
+    for (int j = 0; j < arrayBidimensional.GetLength(1); j++) // percorre as colunas
+    {
+        Console.WriteLine($"Elemento [{i}, {j}]: {arrayBidimensional[i, j]}");
+    }
+}
+
+```
