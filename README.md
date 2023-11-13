@@ -317,4 +317,59 @@ switch (expressao)
         break;
 }
 ```
-**É importante notar que, após a execução de um bloco de código de um caso correspondente, a instrução break é usada para sair do switch. Se o break não for usado, a execução continuará nos casos seguintes, o que pode não ser desejado.**    
+**É importante notar que, após a execução de um bloco de código de um caso correspondente, a instrução break é usada para sair do switch. Se o break não for usado, a execução continuará nos casos seguintes, o que pode não ser desejado.**        
+
+## Seção 11 - Estruturas de repetição
+### Estrutura while
+Utilizada para criar um loop que continua executando enquanto uma condição específica é verdadeira.     
+**A condição é avaliada antes de cada iteração do loop.**    
+``` 
+int contador = 1;
+
+// enquanto verdadeiro, continuará sendo executado
+while (contador <= 5)
+{
+    Console.WriteLine(contador);
+    contador++;
+}
+```
+**É importante ter cuidado ao usar estruturas de repetição while para evitar loops infinitos. Certifique-se de que a condição do while eventualmente se torne falsa para que o loop possa ser encerrado. Caso contrário, o programa ficará preso em um loop infinito, o que pode levar a problemas de desempenho ou travamento do programa.**
+
+### Estrutura Do While
+A estrutura de repetição do-while é semelhante à estrutura while, mas a diferença fundamental está na avaliação da condição. No do-while, o bloco de código é executado pelo menos uma vez, mesmo que a condição seja inicialmente falsa. A avaliação da condição ocorre após a execução do bloco de código.     
+``` 
+int contador = 1;
+
+do
+{
+    Console.WriteLine(contador);
+    contador++;
+} while (contador <= 5);
+```    
+### Estrutura For
+Utilizada para criar loops que têm uma estrutura mais compacta e geralmente são usados quando o número de iterações é conhecido antecipadamente.    
+Sintaxe: 
+```
+for (inicialização; condição; incremento)
+{
+    // Código a ser executado em cada iteração
+}
+
+// Exemplo
+
+for (int i = 1; i <= 5; i++)
+{
+    Console.WriteLine(i);
+}
+```
+### Estrutura Foreach
+Usada para percorrer os elementos de uma coleção, como um array ou uma lista, de uma maneira mais simples e legível. é como um "ajudante de iteração" que torna mais fácil percorrer os elementos de uma coleção.  
+A principal vantagem do foreach é a simplicidade. Ele lida automaticamente com a iteração pelos elementos da coleção, tornando o código mais fácil de entender e menos propenso a erros relacionados a índices. É uma escolha conveniente quando você precisa apenas percorrer todos os itens de uma coleção, sem se preocupar com detalhes de índices ou contadores.    
+```
+string[] cores = { "vermelho", "verde", "azul" };
+
+foreach (string corAtual in cores)
+{
+    Console.WriteLine(corAtual);
+}
+```
