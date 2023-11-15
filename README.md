@@ -373,3 +373,191 @@ foreach (string corAtual in cores)
     Console.WriteLine(corAtual);
 }
 ```
+
+## Seção 12 - Programação Orientada a Objeto
+### O que é Programação Orientada a Objeto    
+A Programação Orientada a Objetos (POO) é um paradigma de programação que organiza o código em torno de objetos, que são instâncias de classes. Um objeto é uma estrutura que contém dados (atributos) e métodos (funções) que operam sobre esses dados. O principal objetivo da POO é modelar o mundo real de uma maneira mais natural e eficiente.    
+### Classes e Objetos    
+#### Classes 
+Uma classe é uma estrutura que define um tipo de objeto. Ela serve como um modelo para criar objetos. As classes encapsulam dados (atributos) e comportamentos (métodos) relacionados a um conceito específico.     
+ Por exemplo, se estivermos modelando um sistema de gerenciamento de biblioteca, poderíamos ter uma classe Livro:    
+``` 
+public class Livro
+{
+    // Atributos
+    public string Titulo { get; set; }
+    public string Autor { get; set; }
+    public int AnoPublicacao { get; set; }
+
+    // métodos
+    public void ExibirDetalhes()
+    {
+        Console.WriteLine($"Livro: {Titulo}, Autor: {Autor}, Ano: {AnoPublicacao}");
+    }
+}
+```
+Neste exemplo, a classe Livro possui três atributos (Titulo, Autor, AnoPublicacao), e um método (ExibirDetalhes).    
+#### Objetos    
+Os objetos são instâncias de uma classe. Eles são criados a partir de uma classe e representam entidades específicas.    
+```
+class Program
+{
+    static void Main()
+    {
+        // Criar objetos da classe Livro
+        Livro livro1 = new Livro("C# Programming", "John Doe", 2022);
+        Livro livro2 = new Livro("Data Structures", "Jane Smith", 2019);
+
+        // Usar métodos e acessar atributos dos objetos
+        livro1.ExibirDetalhes(); // Saída: Livro: C# Programming, Autor: John Doe, Ano: 2022
+        livro2.ExibirDetalhes(); // Saída: Livro: Data Structures, Autor: Jane Smith, Ano: 2019
+    }
+}
+```
+Neste exemplo, livro1 e livro2 são objetos da classe Livro. Eles têm atributos específicos (como Titulo, Autor e AnoPublicacao) que foram definidos na classe Livro. Cada objeto é independente dos outros e pode ter valores diferentes para esses atributos.    
+
+### Atributos das classes
+Os campos são variáveis que pertencem à classe e armazenam dados. Eles são frequentemente definidos com um modificador de acesso (como private, public, protected) para controlar o nível de visibilidade.       
+```
+public class Livro
+{
+    // Campos (fields)
+    private string titulo;
+    private string autor;
+    private int anoPublicacao;
+
+    // Outros métodos...
+}
+```
+
+### Métodos Simples e com Parâmetros
+#### Métodos Simples    
+Também conhecidos como métodos sem parâmetros, são aqueles que não recebem nenhum dado específico quando são chamados. Eles geralmente realizam uma ação ou cálculo e podem ou não retornar um valor.    
+```
+public class Exemplo
+{
+    // Método simples sem parâmetros e sem retorno
+    public void ExibirMensagemSimples()
+    {
+        Console.WriteLine("Esta é uma mensagem simples.");
+    }
+
+    // Método simples com retorno
+    public int SomarNumeros()
+    {
+        int resultado = 5 + 3;
+        return resultado;
+    }
+}
+```
+
+#### Métodos com Parâmetros
+Permitem que você passe dados específicos para serem usados dentro do método. Os parâmetros são variáveis que recebem valores quando o método é chamado.    
+```
+public class Calculadora
+{
+    // Método com parâmetros e retorno
+    public int Somar(int a, int b)
+    {
+        int resultado = a + b;
+        return resultado;
+    }
+
+    // Método com parâmetro e sem retorno
+    public void ExibirMensagemPersonalizada(string mensagem)
+    {
+        Console.WriteLine($"Mensagem: {mensagem}");
+    }
+}
+```
+
+#### Passagem de Parâmetro por Referência    
+permite que você passe uma referência à variável original para o método, em vez de apenas o valor. Isso significa que as alterações feitas no parâmetro dentro do método afetarão diretamente a variável original fora do método. Em C#, você usa a palavra-chave `ref` para indicar a passagem por referência.    
+```
+public class Exemplo
+{
+    // Método que modifica o valor do parâmetro por referência
+    public void ModificarPorReferencia(ref int numero)
+    {
+        numero = numero * 2;
+    }
+}
+```
+**Ao usar o método:**
+```
+class Program
+{
+    static void Main()
+    {
+        Exemplo exemplo = new Exemplo();
+        int valor = 5;
+
+        Console.WriteLine($"Antes da modificação: {valor}");
+
+        exemplo.ModificarPorReferencia(ref valor);
+
+        Console.WriteLine($"Depois da modificação: {valor}");
+    }
+}
+```
+**Saída:**
+```
+Antes da modificação: 5
+Depois da modificação: 10
+```
+Observe que, ao chamar o método ModificarPorReferencia, usamos ref antes do parâmetro numero. Isso indica que estamos passando a variável valor por referência, permitindo que o método modifique diretamente o valor da variável original.
+
+É importante notar que a passagem de parâmetro por referência tem implicações em termos de segurança e previsibilidade do código. Ela pode tornar o código mais difícil de entender e manter, pois a modificação de uma variável dentro de um método pode afetar seu estado em outros lugares do programa.    
+
+### Métodos com Retorno de Valores    
+São aqueles que realizam alguma operação e retornam um valor específico para o local de onde foram chamados. O valor retornado pode ser de qualquer tipo de dado, como inteiros, strings, objetos, etc. A palavra-chave return é usada para especificar o valor que o método retorna.     
+```
+public class Calculadora
+{
+    // Método com retorno de valor (soma de dois números)
+    public int Somar(int a, int b)
+    {
+        int resultado = a + b;
+        return resultado;
+    }
+
+    // Método com retorno de valor (concatenação de duas strings)
+    public string Concatenar(string str1, string str2)
+    {
+        string resultado = str1 + str2;
+        return resultado;
+    }
+}
+```
+
+### Sobrecarga de Métodos (overloading)
+É um conceito em programação orientada a objetos que permite que uma classe tenha vários métodos com o mesmo nome, mas com diferentes parâmetros. Cada método na sobrecarga de métodos realiza uma tarefa específica com base nos parâmetros fornecidos.    
+```
+public class Calculadora
+{
+    // Método para somar dois inteiros
+    public int Somar(int a, int b)
+    {
+        return a + b;
+    }
+
+    // Método para somar três inteiros
+    public int Somar(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+
+    // Método para concatenar duas strings
+    public string Concatenar(string str1, string str2)
+    {
+        return str1 + str2;
+    }
+
+    // Método para concatenar três strings
+    public string Concatenar(string str1, string str2, string str3)
+    {
+        return str1 + str2 + str3;
+    }
+}
+```
+A sobrecarga de métodos é uma maneira poderosa de tornar o código mais flexível e fácil de usar, pois permite que os métodos tenham a mesma semântica (mesmo nome) enquanto operam com diferentes conjuntos de dados. Isso aumenta a legibilidade do código e a capacidade de reutilização.
