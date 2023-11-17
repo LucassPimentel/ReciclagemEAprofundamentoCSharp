@@ -561,3 +561,90 @@ public class Calculadora
 }
 ```
 A sobrecarga de métodos é uma maneira poderosa de tornar o código mais flexível e fácil de usar, pois permite que os métodos tenham a mesma semântica (mesmo nome) enquanto operam com diferentes conjuntos de dados. Isso aumenta a legibilidade do código e a capacidade de reutilização.
+
+### Termo this
+A palavra-chave this é utilizada para se referir à instância atual de uma classe. Ela é usada principalmente para evitar ambiguidades entre membros de uma classe e parâmetros de métodos ou construtores que compartilham o mesmo nome.    
+```
+public class Exemplo
+{
+    private int valor;
+
+    public void SetValor(int valor)
+    {
+        // Usando "this" para distinguir entre o parâmetro e o membro da classe
+        // esse "this" referencia a classe Exemplo, logo o this.valor equivale a variável externa
+        this.valor = valor;
+    }
+}    
+```
+
+### Delegates
+Delegate é um tipo que representa referências a métodos. Ele é frequentemente usado para criar métodos seguros e flexíveis, permitindo que você passe métodos como argumentos para outros métodos, crie callbacks e implemente eventos. É necessário que os métodos tenham a mesma assinatura do delegate.
+```
+// Definindo um delegate chamado MeuDelegate
+public delegate void MeuDelegate(string mensagem);
+
+public class ExemploDelegado
+{
+    // Um método que se encaixa na assinatura do delegate
+    public static void Metodo1(string mensagem)
+    {
+        Console.WriteLine("Método1: " + mensagem);
+    }
+
+    public static void Metodo2(string mensagem)
+    {
+        Console.WriteLine("Método2: " + mensagem);
+    }
+
+public static void Main()
+{
+        // Instanciando o delegate com o método1
+        MeuDelegate delegate1 = new MeuDelegate(Metodo1);
+
+        // Invocando o delegate (chamando o Método1)
+        delegate1("Olá, Mundo!");
+
+        // Alterando a referência do delegate para apontar para o Método2
+        delegate1 = new MeuDelegate(Metodo2);
+
+        // Invocando o delegate novamente (chamando o Método2)
+        delegate1("Hello, World!");
+
+        // Para fazer com que um delegate execute mais de um método em uma única chamada, faça:
+
+        // Instanciando o delegate com o método1
+        MeuDelegate delegate1 = Metodo1;
+
+        // Adicionando o método2 ao delegate
+        delegate1 += Metodo2;
+
+        // Adicionando o método3 ao delegate
+        delegate1 += Metodo3;
+
+        // Invocando o delegate, que executará todos os métodos associados
+        delegate1("Olá, Mundo!");
+    }
+}
+```
+Os delegates oferecem uma maneira flexível de trabalhar com métodos, permitindo que você os trate como objetos e, assim, forneça uma forma poderosa de implementar padrões como callbacks e eventos. Eles são frequentemente usados em conjunto com eventos para permitir que objetos notifiquem outros objetos sobre a ocorrência de determinados eventos.    
+
+### Método construtor
+Construtor é um método especial dentro de uma classe que é chamado automaticamente quando um objeto da classe é criado. O construtor é usado para inicializar os membros da classe e realizar outras operações de inicialização necessárias.     
+Sintaxe básica:    
+```
+public class Pessoa
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+
+    // Construtor padrão
+    public Pessoa()
+    {
+        Nome = "Sem Nome";
+        Idade = 0;
+    }
+}
+
+```
+Os construtores desempenham um papel fundamental na criação de objetos e garantem que os objetos sejam configurados corretamente desde o início. Eles são parte integrante da programação orientada a objetos em C#.
