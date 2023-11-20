@@ -648,3 +648,274 @@ public class Pessoa
 
 ```
 Os construtores desempenham um papel fundamental na criação de objetos e garantem que os objetos sejam configurados corretamente desde o início. Eles são parte integrante da programação orientada a objetos em C#.
+
+### Sobrecarga de construtor (overloading)
+É a capacidade de ter múltiplas versões de um construtor em uma classe, cada uma com uma lista diferente de parâmetros. Isso permite que você crie objetos da classe de diferentes maneiras, com base nos argumentos fornecidos ao chamar o construtor.    
+A sobrecarga de construtor é útil quando você deseja fornecer flexibilidade na forma como os objetos são inicializados, permitindo que os usuários da sua classe forneçam diferentes conjuntos de parâmetros, conforme necessário. Isso facilita a criação de objetos de uma maneira que seja mais intuitiva ou conveniente para o usuário da classe.    
+```
+public class ExemploSobrecargaConstrutor
+{
+    private string nome;
+    private int idade;
+
+    // Construtor padrão
+    public ExemploSobrecargaConstrutor()
+    {
+        nome = "Sem Nome";
+        idade = 0;
+    }
+
+    // Construtor com um parâmetro
+    public ExemploSobrecargaConstrutor(string nome)
+    {
+        this.nome = nome;
+        idade = 0;
+    }
+
+    // Construtor com dois parâmetros
+    public ExemploSobrecargaConstrutor(string nome, int idade)
+    {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+```
+
+### Classes estáticas
+São classes que não podem ser instanciadas. Os membros estáticos de uma classe estão associados à própria classe em vez de instâncias individuais dessa classe. Isso significa que você pode acessar membros estáticos sem criar uma instância da classe.    
+Um exemplo básico:    
+```
+public static class MinhaClasseEstatica
+{
+    // Membro de dados estático
+    public static int NumeroEstatico = 10;
+
+    // Método estático
+    public static void MeuMetodoEstatico()
+    {
+        Console.WriteLine("Este é um método estático.");
+    }
+}
+```
+Acesso:    
+```
+// Acesso à variável estática
+int valor = MinhaClasseEstatica.NumeroEstatico;
+
+// Chamada ao método estático
+MinhaClasseEstatica.MeuMetodoEstatico();
+```
+
+**Existem algumas características e restrições importantes associadas a classes estáticas em C#:**
+1. Não podem ser instanciadas: Você não pode criar uma instância de uma classe estática usando o operador new.
+2. Membros devem ser estáticos: Todos os membros de uma classe estática (campos, propriedades, métodos, etc.) devem ser declarados como estáticos.
+3. Acesso direto: Os membros estáticos podem ser acessados diretamente através do nome da classe, sem a necessidade de criar uma instância.
+4. Inicialização única: Os membros estáticos são inicializados apenas uma vez, geralmente quando a classe é carregada pela primeira vez no aplicativo.
+5. Uso comum: As classes estáticas são frequentemente usadas para agrupar funcionalidades relacionadas que não precisam de estado de instância.
+6. Utilidade em métodos auxiliares: Métodos estáticos em classes estáticas são frequentemente usados para fornecer funcionalidades auxiliares que não dependem do estado do objeto.
+
+As classes estáticas são úteis para agrupar funcionalidades relacionadas que não exigem estado de instância. Por exemplo, classes utilitárias que fornecem métodos de apoio, como funções de cálculo, manipulação de strings, ou configurações globais.    
+
+### Membros estáticos
+Membros estáticos são componentes de uma classe que pertencem à própria classe, em vez de pertencerem a instâncias específicas da classe. Isso significa que, ao contrário dos membros de instância, os membros estáticos são compartilhados entre todas as instâncias da classe e podem ser acessados sem a necessidade de criar uma instância da classe.    
+Existem vários tipos de membros estáticos em C#, incluindo campos, métodos, propriedades e construtores.
+Campo estático:    
+```
+public class MinhaClasse
+{
+    public static int CampoEstatico = 42;
+}
+```
+
+### Classes parciais (partial)    
+Classes parciais (partial classes) permitem dividir a definição de uma classe em várias partes, que podem estar em diferentes arquivos. Cada parte é definida usando a palavra-chave `partial`. Quando o compilador compila o código, ele combina todas as partes da classe em uma única definição de classe.    
+A principal finalidade das classes parciais é permitir que diferentes partes de uma classe sejam desenvolvidas, mantidas e estendidas de forma independente. Isso é particularmente útil em cenários onde parte da implementação da classe é gerada automaticamente por uma ferramenta, enquanto outras partes são escritas manualmente.    
+
+```
+// Arquivo 1: MinhaClasseParte1.cs
+partial class MinhaClasse
+{
+    public void MetodoParte1()
+    {
+        Console.WriteLine("Parte 1");
+    }
+}
+
+// Arquivo 2: MinhaClasseParte2.cs
+partial class MinhaClasse
+{
+    public void MetodoParte2()
+    {
+        Console.WriteLine("Parte 2");
+    }
+}
+
+// Arquivo 3: Programa.cs
+class Programa
+{
+    static void Main()
+    {
+        MinhaClasse instancia = new MinhaClasse();
+        instancia.MetodoParte1(); // Saída: Parte 1
+        instancia.MetodoParte2(); // Saída: Parte 2
+    }
+}
+```
+Neste exemplo, a classe MinhaClasse é dividida em duas partes (MinhaClasseParte1 e MinhaClasseParte2). Ambas as partes são necessárias para criar uma única classe funcional. O compilador do C# combina automaticamente essas partes quando o código é compilado, tratando-as como se fossem uma única definição de classe.    
+
+**Considerações:**
+1. Membros Compartilhados: Membros como campos, propriedades e métodos podem ser compartilhados entre as partes da classe.
+2. Assinatura Consistente: As partes de uma classe parcial devem ter a mesma assinatura (nome, tipo de retorno, parâmetros) para membros compartilhados.
+3. Ordem Não Importante: A ordem em que as partes são definidas não importa.
+4. Herança: As partes podem estar em classes base e derivadas.
+5. Mesmo Assembly: Todas as partes devem estar no mesmo assembly (arquivo de saída do compilador).    
+
+### Propriedades da classe (get - set)
+São membros de uma classe que permitem acessar ou modificar valores de campos privados de maneira controlada. As propriedades são frequentemente usadas para encapsular o acesso aos campos, permitindo que você defina lógica personalizada (como validações) ao ler ou escrever valores. As propriedades geralmente consistem em dois métodos chamados get e set.    
+```
+public class ExemploClasse
+{
+    // Propriedade automática
+    public int MinhaPropriedade { get; set; }
+
+    // você também pode alterar se o campo poderá ser escrito ou somente lido
+
+    // somente leitura
+    public int MinhaPropriedade { get; }
+
+    // pode ser escrito e lido
+    public int MinhaPropriedade { get; set; }
+
+}
+```    
+Em resumo, as propriedades em C# oferecem uma maneira de encapsular campos e fornecer acesso controlado a eles, permitindo que você defina lógica personalizada ao ler ou escrever valores. As propriedades são uma parte fundamental do conceito de encapsulamento em programação orientada a objetos.    
+
+### Encapsulamento   
+O encapsulamento é um dos princípios fundamentais da programação orientada a objetos (POO). Ele refere-se à ideia de agrupar os dados (campos) e os métodos (operações) que operam nesses dados em uma única unidade chamada classe. Além disso, o encapsulamento implica na restrição do acesso direto aos detalhes internos da implementação da classe, exigindo que a interação com os objetos seja realizada por meio de interfaces públicas bem definidas.    
+Em C#, o encapsulamento é implementado usando modificadores de acesso, como `public`, `private`, `protected` e `internal`, para controlar o acesso aos membros de uma classe.    
+```
+public class ExemploClasse
+{
+    // Campo privado
+    private int _meuDado;
+
+    // Propriedade pública
+    public int MinhaPropriedade
+    {
+        get { return _meuDado; }
+        set { _meuDado = value; }
+    }
+
+    // Método público
+    public void MeuMetodo()
+    {
+        // Lógica do método
+    }
+}
+```
+Chamada:
+```
+ExemploClasse objeto = new ExemploClasse();
+
+// Acesso a propriedade pública
+objeto.MinhaPropriedade = 42;
+
+// Chamada a método público
+objeto.MeuMetodo();
+```
+O encapsulamento ajuda a 'esconder' a complexidade interna de uma classe e promove um design mais modular, onde as interações são realizadas por meio de interfaces públicas bem definidas. Essa abordagem facilita a manutenção do código, já que as alterações internas em uma classe não afetam o código que a utiliza, desde que a interface pública permaneça consistente.    
+
+### Herança
+A herança é um dos conceitos fundamentais da programação orientada a objetos (OOP) que permite que uma classe herde características (campos e métodos) de outra classe. Isso permite a criação de uma hierarquia de classes, onde as classes derivadas (ou subclasses) herdam as propriedades e comportamentos da classe base (ou superclasse). A herança promove a reutilização de código e facilita a criação de hierarquias de classes que refletem a estrutura do problema que está sendo modelado.        
+```
+// Classe base (superclasse)
+public class Animal
+{
+    public void Comer()
+    {
+        Console.WriteLine("O animal está comendo.");
+    }
+}
+
+// Classe derivada (subclasse)
+public class Mamifero : Animal
+{
+    public void Amamentar()
+    {
+        Console.WriteLine("O mamífero está amamentando.");
+    }
+}
+```
+1. Herança de Métodos e Campos: A classe derivada herda todos os métodos e campos públicos e protegidos da classe base. No exemplo acima, a classe Mamifero herda o método Comer da classe Animal.
+2. Adição de Novos Membros: Além de herdar membros da classe base, a classe derivada pode adicionar novos membros, como métodos ou campos adicionais.
+3. Sobrescrita de Métodos: Uma classe derivada pode substituir (sobrescrever) um método da classe base usando a palavra-chave override. Isso permite que a classe derivada forneça uma implementação específica para esse método.
+```
+// Sobrescrita de método
+public class Cachorro : Mamifero
+{
+    public override void Comer()
+    {
+        Console.WriteLine("O cachorro está comendo ração.");
+    }
+}
+```
+C# não suporta herança múltipla de classes, ou seja, uma classe não pode herdar diretamente de mais de uma classe. No entanto, você pode implementar herança múltipla por meio de interfaces.    
+Exemplo:    
+```
+public interface IFelino
+{
+    void Rugir();
+}
+
+public class Leao : Animal, IFelino
+{
+    public void Rugir()
+    {
+        Console.WriteLine("O leão está rugindo.");
+    }
+}
+```        
+A herança é uma ferramenta poderosa, mas deve ser usada com cuidado. É importante garantir que a hierarquia de classes faz sentido do ponto de vista do modelo de domínio, evitando hierarquias profundas e excessivamente complexas. O uso adequado de herança contribui para um design mais flexível, modular e fácil de entender.    
+
+### Classes abstratas    
+Uma classe abstrata em C# é uma classe que não pode ser instanciada diretamente e que pode conter membros abstratos. Membros abstratos são métodos que são declarados na classe abstrata, mas não fornecem uma implementação. A implementação desses membros é deixada para as classes derivadas. Classes abstratas fornecem uma base para outras classes e são frequentemente usadas para criar hierarquias de classes.    
+Pontos importantes:    
+1. Declaração de uma Classe Abstrata: use a palavra-chave `abstract` para declarar uma classe abstrata. Uma classe abstrata pode conter métodos abstratos (sem implementação), bem como métodos concretos (com implementação).
+```
+public abstract class Animal
+{
+    // Método abstrato
+    public abstract void EmitirSom();
+
+    // Método concreto
+    public void Dormir()
+    {
+        Console.WriteLine("O animal está dormindo.");
+    }
+}
+```
+2. Membros Abstratos: membros abstratos são marcados com a palavra-chave `abstract` e não fornecem uma implementação na classe abstrata. As classes derivadas devem fornecer uma implementação para esses membros.    
+```
+public abstract class Animal
+{
+    // Método abstrato
+    public abstract void EmitirSom();
+}
+
+public class Cachorro : Animal
+{
+    // Implementação do método abstrato
+    public override void EmitirSom()
+    {
+        Console.WriteLine("O cachorro está latindo.");
+    }
+}
+```
+
+3. Instanciação e Herança: não é possível criar uma instância de uma classe abstrata. Você deve criar uma classe derivada não abstrata e, em seguida, instanciar essa classe.
+```
+Animal animal = new Cachorro();
+animal.EmitirSom(); // Chama a implementação de Cachorro
+```
+
+As classes abstratas são valiosas quando você quer definir uma estrutura comum para um grupo de classes relacionadas, enquanto ainda permite a personalização através da implementação de membros abstratos nas classes derivadas. Isso facilita a criação de hierarquias de classes mais flexíveis e reutilizáveis.
