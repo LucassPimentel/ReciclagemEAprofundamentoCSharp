@@ -918,4 +918,147 @@ Animal animal = new Cachorro();
 animal.EmitirSom(); // Chama a implementação de Cachorro
 ```
 
-As classes abstratas são valiosas quando você quer definir uma estrutura comum para um grupo de classes relacionadas, enquanto ainda permite a personalização através da implementação de membros abstratos nas classes derivadas. Isso facilita a criação de hierarquias de classes mais flexíveis e reutilizáveis.
+As classes abstratas são valiosas quando você quer definir uma estrutura comum para um grupo de classes relacionadas, enquanto ainda permite a personalização através da implementação de membros abstratos nas classes derivadas. Isso facilita a criação de hierarquias de classes mais flexíveis e reutilizáveis.    
+
+### Classes sealed
+A palavra-chave sealed é usada para restringir a herança de uma classe. Quando uma classe é marcada como sealed, ela não pode ser usada como classe base para outras classes. Em outras palavras, você não pode derivar uma nova classe a partir de uma classe sealed.    
+```
+// classe selada
+public sealed class MinhaClasseSelada
+{
+    // Membros da classe
+}
+
+// Isso gerará um erro de compilação
+public class MinhaClasseDerivada : MinhaClasseSelada
+{
+    // Membros da classe derivada
+}
+
+```
+Essa restrição pode ser útil em alguns casos. Por exemplo, se você tem uma classe que fornece funcionalidades completas e não deseja que outras classes herdem dela para estender ou modificar seu comportamento, você pode marcá-la como sealed. Isso ajuda a garantir que a implementação original não seja alterada ou estendida inadvertidamente.    
+
+### Membros sealed
+Além de poder selar uma classe, é possível selar membros específicos dentro de uma classe usando a palavra-chave sealed. Essa abordagem permite que você impeça que métodos, propriedades ou indexadores sejam sobrescritos em classes derivadas. O uso de sealed em membros é comumente aplicado a métodos, mas também pode ser usado em propriedades e indexadores.    
+```
+public class MinhaClasseBase
+{
+    public virtual void MetodoBase()
+    {
+        Console.WriteLine("Método base.");
+    }
+}
+
+public class MinhaClasseDerivada : MinhaClasseBase
+{
+    public sealed override void MetodoBase()
+    {
+        Console.WriteLine("Método na classe derivada, selado.");
+    }
+}
+
+public class MinhaClasseFilha : MinhaClasseDerivada
+{
+    // Tentar sobrescrever o método selado gerará um erro de compilação.
+    // public override void MetodoBase() { } 
+}
+```
+Neste exemplo: 
+- MinhaClasseBase define um método virtual chamado MetodoBase.
+- MinhaClasseDerivada herda de MinhaClasseBase e sobrescreve o método, marcando-o como sealed.
+- MinhaClasseFilha tenta sobrescrever o método MetodoBase, mas isso resultaria em um erro de compilação, pois o método na classe base já foi selado.
+  
+Isso é útil quando você quer garantir que determinados métodos (ou outros membros) não sejam alterados nas classes derivadas além de um certo ponto na hierarquia de herança.
+
+### Modificadores de acesso    
+Modificadores de acesso são palavras-chave que definem a visibilidade e acessibilidade de classes, membros de classes (como campos, métodos, propriedades etc.) e outros elementos em um programa. Os principais modificadores de acesso são:    
+1. `public`: Um membro declarado como público é acessível de qualquer lugar. Isso significa que ele pode ser acessado por qualquer classe ou código que tenha uma referência para o tipo que contém o membro público.
+2. `private`: Um membro declarado como privado só é acessível dentro da própria classe em que foi declarado. Isso é fundamental para o encapsulamento, impedindo que detalhes internos da implementação sejam acessados diretamente de fora da classe.
+3. `protected`: Um membro declarado como protegido é acessível dentro da própria classe e por classes derivadas. Ele não pode ser acessado de fora da classe ou de classes que não são derivadas.
+4. `internal`: Um membro declarado como interno é acessível dentro do mesmo assembly. Um assembly em C# é, geralmente, um arquivo DLL ou EXE.
+5. `protected internal`: Combina as características de protegido e interno. O membro é acessível dentro do mesmo assembly e por classes derivadas, independentemente de estarem no mesmo assembly ou não.
+6. `private protected`: Introduzido no C# 7.2, este modificador é semelhante ao protected internal, mas apenas permite acesso em classes derivadas no mesmo assembly.
+
+### Polimorfismo
+O polimorfismo é um conceito importante em programação orientada a objetos que se traduz para "muitas formas" e permite que objetos de diferentes tipos sejam tratados de maneira uniforme. Isso ocorre por meio de dois tipos principais de polimorfismo: polimorfismo de subtipo (ou polimorfismo de herança) e polimorfismo de sobrecarga.    
+
+#### Polimorfismo de Subtipo (Herança):
+No polimorfismo de subtipo, objetos de classes derivadas podem ser tratados como objetos da classe base. Isso significa que você pode usar uma classe base para se referir a instâncias de suas classes derivadas.    
+```
+public class Animal
+{
+    public virtual void FazerSom()
+    {
+        Console.WriteLine("Algum som de animal.");
+    }
+}
+
+public class Cachorro : Animal
+{
+    public override void FazerSom()
+    {
+        Console.WriteLine("Latindo...");
+    }
+}
+
+public class Gato : Animal
+{
+    public override void FazerSom()
+    {
+        Console.WriteLine("Miando...");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal meuAnimal = new Cachorro();
+        meuAnimal.FazerSom(); // Resultado: Latindo...
+
+        meuAnimal = new Gato();
+        meuAnimal.FazerSom(); // Resultado: Miando...
+    }
+}
+```
+Neste exemplo, Cachorro e Gato são classes derivadas de Animal. Mesmo que a variável meuAnimal seja declarada como do tipo Animal, ela pode referenciar instâncias tanto de Cachorro quanto de Gato, e a chamada ao método FazerSom() invoca a implementação específica da classe real do objeto.    
+
+#### Polimorfismo de Sobrecarga (Interfaces ou Métodos com Mesmo Nome):
+No polimorfismo de sobrecarga, diferentes classes ou interfaces podem ter métodos com o mesmo nome, mas com implementações diferentes.    
+```
+public interface IForma
+{
+    void Desenhar();
+}
+
+public class Circulo : IForma
+{
+    public void Desenhar()
+    {
+        Console.WriteLine("Desenhando um círculo.");
+    }
+}
+
+public class Quadrado : IForma
+{
+    public void Desenhar()
+    {
+        Console.WriteLine("Desenhando um quadrado.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IForma forma = new Circulo();
+        forma.Desenhar(); // Resultado: Desenhando um círculo.
+
+        forma = new Quadrado();
+        forma.Desenhar(); // Resultado: Desenhando um quadrado.
+    }
+}
+```
+Neste exemplo, Circulo e Quadrado implementam a interface IForma. Apesar de terem o mesmo método Desenhar(), cada classe fornece sua própria implementação. No entanto, você pode tratar objetos dessas classes como objetos da interface IForma, permitindo que você os use de forma polimórfica.    
+
+O polimorfismo torna o código mais flexível e extensível, facilitando a adição de novos tipos sem alterar o código existente. Ele é uma parte fundamental do paradigma de programação orientada a objetos.
