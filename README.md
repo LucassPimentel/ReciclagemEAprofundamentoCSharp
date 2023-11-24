@@ -1114,4 +1114,36 @@ private void Form1_Closed(object sender, EventArgs e)
     // Código a ser executado após o fechamento da Form.
 }
 ```
-Esses são apenas alguns exemplos de eventos disponíveis em uma Form no Windows Forms. Cada evento permite que você associe código personalizado para lidar com interações do usuário ou alterações de estado.
+Esses são apenas alguns exemplos de eventos disponíveis em uma Form no Windows Forms. Cada evento permite que você associe código personalizado para lidar com interações do usuário ou alterações de estado.    
+
+### Eventos dos controles
+Eventos em controles no Windows Forms são ações ou ocorrências que podem ser detectadas e tratadas durante a execução do programa. Eles permitem que você responda a interações do usuário ou a mudanças de estado nos controles da interface do usuário.        
+**Exemplo:**    
+1. Click: O evento Click ocorre quando o usuário clica com o mouse no controle.
+```
+private void button1_Click(object sender, EventArgs e)
+{
+    // Código a ser executado quando o botão é clicado.
+}
+```
+
+2. DoubleClick: Este evento ocorre quando o usuário clica duas vezes rapidamente no controle.
+```
+private void pictureBox1_DoubleClick(object sender, EventArgs e)
+{
+    // Código a ser executado quando o usuário faz um clique duplo na imagem.
+}
+```
+
+3. MouseEnter e MouseLeave: O evento MouseEnter ocorre quando o ponteiro do mouse entra na área do controle, e o evento MouseLeave ocorre quando o ponteiro do mouse deixa a área do controle.
+```
+private void label1_MouseEnter(object sender, EventArgs e)
+{
+    // Código a ser executado quando o mouse entra na área da etiqueta.
+}
+
+private void label1_MouseLeave(object sender, EventArgs e)
+{
+    // Código a ser executado quando o mouse deixa a área da etiqueta.
+}
+```
