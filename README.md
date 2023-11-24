@@ -1,7 +1,7 @@
 # ReciclagemEAprofundamentoCSharp
 Reciclagem e aprofundamento de C# feita no curso da Udemy do Gabriel Artigas Pierri 
 
-## Seção 4: Variáveis, Constantes e tipos de dados 
+## Variáveis, Constantes e tipos de dados 
 ### Numéricos Inteiros
 ![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoC-/assets/95232367/ed744511-384b-48ec-8c1c-f84b83483a8b)
 
@@ -27,7 +27,7 @@ Integral sem sinal - não suportem números negativos (byte, ushort, uint, ulong
 Ao contrário das classes, as `structs` são tipos de valor, o que significa que elas são armazenadas diretamente na memória onde são declaradas, em vez de em uma referência alocada no heap. Isso pode ser útil em situações em que você deseja otimizar o desempenho e a eficiência de memória, especialmente para tipos pequenos e imutáveis.  
 São úteis quando você tem um conjunto pequeno de dados que faz sentido ser tratado como uma única unidade, e a cópia direta dos dados é preferível à referência. Elas são frequentemente usadas para representar conceitos simples, como coordenadas, cores ou outras estruturas de dados pequenas e imutáveis.
 
-## Seção 5: Entrada e Saída de dados   
+## Entrada e Saída de dados   
 ### Saída de dados
 **Console.WriteLine():**  
 ```
@@ -67,7 +67,7 @@ char keyChar = keyInfo.KeyChar;
 ```  
 Este método aguarda até que uma tecla seja pressionada e retorna informações sobre a tecla pressionada, incluindo o caractere associado.
 
-## Seção 6 - Conversão de tipos de dados
+## Conversão de tipos de dados
 ### Conversão implícita de tipos numéricos
 As conversões implícitas de tipos numéricos referem-se à capacidade do compilador de converter automaticamente um tipo de dado para outro sem a necessidade de intervenção explícita do programador. **Essas conversões ocorrem quando não há perda de dados e quando a conversão é segura.**  
 
@@ -178,7 +178,7 @@ DateTime data = Convert.ToDateTime(dataString);
 ```
 Estes são apenas alguns exemplos e existem outros métodos na classe Convert para lidar com diferentes tipos de dados. É importante notar que, assim como com o método Parse(), os métodos na classe Convert podem lançar exceções se a conversão não for possível. Se você precisar de uma abordagem mais segura, pode preferir usar métodos como TryParse() para evitar exceções em casos de conversão mal-sucedida.
 
-## Seção 7 - Operadores 
+## Operadores 
 ### Operadores aritméticos
 ![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/38731157-289c-4af2-8942-fb0dcc657884)
 
@@ -191,7 +191,7 @@ Estes são apenas alguns exemplos e existem outros métodos na classe Convert pa
 ### Operadores lógicos
 ![image](https://github.com/LucassPimentel/ReciclagemEAprofundamentoCSharp/assets/95232367/a0f5e2b1-6477-4f08-98e3-134ded038e8b)
 
-## Seção 8 - Coleções do tipo Array
+##   8 - Coleções do tipo Array
 ### Vetor - Array unidimensional
 Array unidimensional é uma estrutura de dados que armazena elementos do mesmo tipo em uma sequência contígua de memória. Ele fornece um meio eficiente de armazenar e acessar múltiplos valores usando um único nome de variável. 
 ``` 
@@ -261,7 +261,7 @@ for (int i = 0; i < arrayBidimensional.GetLength(0); i++) // percorre as linhas
 }
 
 ```
-## Seção 9 - Estruturas condicionais
+## Estruturas condicionais
 ### Estruturas condicionais simples
 Estruturas condicionais são usadas para tomar decisões com base em condições específicas.
 ``` 
@@ -279,7 +279,7 @@ if (numero > 0)
 // O programa continua aqui após o bloco 'if'
 Console.WriteLine("Fim do programa.");
 ```
-### Operador ternário
+### Operador 
 O operador ternário é uma construção compacta e concisa em C# (e em muitas outras linguagens de programação) que permite expressar uma decisão em uma única linha. Ele é uma forma abreviada de escrever uma instrução if-else. 
 sintaxe: **condicao ? expressaoSeVerdadeira : expressaoSeFalsa;**    
 ```
@@ -291,7 +291,7 @@ int numero = 10;
 // Usando o operador ternário para determinar se o número é positivo
 string mensagem = (numero > 0) ? "Positivo" : "Não positivo";
  ```
-## Seção 10 - Estruturas de controle
+##  Estruturas de controle
 ### Estrutura Switch-case
 A estrutura de controle switch em C# é usada quando você tem várias condições possíveis e deseja executar diferentes blocos de código com base no valor de uma expressão. Ela é uma alternativa mais limpa e legível do que uma série de instruções if-else aninhadas quando você está lidando com múltiplas possibilidades.
 ``` 
@@ -319,7 +319,7 @@ switch (expressao)
 ```
 **É importante notar que, após a execução de um bloco de código de um caso correspondente, a instrução break é usada para sair do switch. Se o break não for usado, a execução continuará nos casos seguintes, o que pode não ser desejado.**        
 
-## Seção 11 - Estruturas de repetição
+## Estruturas de repetição
 ### Estrutura while
 Utilizada para criar um loop que continua executando enquanto uma condição específica é verdadeira.     
 **A condição é avaliada antes de cada iteração do loop.**    
@@ -374,7 +374,7 @@ foreach (string corAtual in cores)
 }
 ```
 
-## Seção 12 - Programação Orientada a Objeto
+## Programação Orientada a Objeto
 ### O que é Programação Orientada a Objeto    
 A Programação Orientada a Objetos (POO) é um paradigma de programação que organiza o código em torno de objetos, que são instâncias de classes. Um objeto é uma estrutura que contém dados (atributos) e métodos (funções) que operam sobre esses dados. O principal objetivo da POO é modelar o mundo real de uma maneira mais natural e eficiente.    
 ### Classes e Objetos    
@@ -1063,7 +1063,48 @@ Neste exemplo, Circulo e Quadrado implementam a interface IForma. Apesar de tere
 
 O polimorfismo torna o código mais flexível e extensível, facilitando a adição de novos tipos sem alterar o código existente. Ele é uma parte fundamental do paradigma de programação orientada a objetos.
 
-## Seção 14 - Windows Forms App
+## Seção Manipulação de strings
+
+### Contains -  toString
+O método Contains em C# é usado para verificar se uma determinada sequência de caracteres (substring) está presente em uma string. Ele retorna um valor booleano indicando se a substring foi encontrada ou não na string original.    
+**Uso:**    
+```
+string mainString = "Hello, World!";
+string substring = "World";
+
+bool containsSubstring = mainString.Contains(substring);
+
+if (containsSubstring)
+{
+    Console.WriteLine("A string principal contém a substring.");
+}
+else
+{
+    Console.WriteLine("A string principal não contém a substring.");
+}
+```
+Neste exemplo, mainString.Contains(substring) retorna true porque a substring "World" está presente na string principal "Hello, World!". Portanto, a mensagem "A string principal contém a substring." será exibida.        
+
+Lembre-se de que o método Contains é sensível a maiúsculas e minúsculas. Se você precisar realizar uma verificação que não diferencia maiúsculas de minúsculas, você pode considerar o uso de métodos como `IndexOf` juntamente com `StringComparison.OrdinalIgnoreCase`.        
+
+### ToUpper - ToLower    
+Os métodos ToUpper e ToLower são métodos da classe String em C# que são usados para converter os caracteres em uma string para maiúsculas ou minúsculas, respectivamente. Ambos os métodos **retornam uma nova string** que contém a versão modificada da string original, sem alterar a string original.        
+**ToUpper**    
+O método ToUpper converte todos os caracteres em maiúsculas.    
+```
+string originalString = "Hello, World!";
+string upperCaseString = originalString.ToUpper();
+Console.WriteLine(upperCaseString); // Saída: HELLO, WORLD!
+```        
+**ToLower**    
+O método ToLower converte todos os caracteres em minúsculas.
+```
+string originalString = "Hello, World!";
+string lowerCaseString = originalString.ToLower();
+Console.WriteLine(lowerCaseString); // Saída: hello, world!
+```
+
+## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
 
 ### Propriedades das Forms    
