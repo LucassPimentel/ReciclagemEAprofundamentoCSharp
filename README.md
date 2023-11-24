@@ -1062,3 +1062,56 @@ class Program
 Neste exemplo, Circulo e Quadrado implementam a interface IForma. Apesar de terem o mesmo método Desenhar(), cada classe fornece sua própria implementação. No entanto, você pode tratar objetos dessas classes como objetos da interface IForma, permitindo que você os use de forma polimórfica.    
 
 O polimorfismo torna o código mais flexível e extensível, facilitando a adição de novos tipos sem alterar o código existente. Ele é uma parte fundamental do paradigma de programação orientada a objetos.
+
+## Seção 14 - Windows Forms App
+O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
+
+### Propriedades das Forms    
+No contexto do desenvolvimento de software com Windows Forms, uma "Form" (ou formulário) é uma janela ou tela na qual você pode projetar a interface do usuário para interagir com o aplicativo. As Forms no Windows Forms App têm várias propriedades que podem ser configuradas para controlar seu comportamento e aparência.     
+**Por exemplo:**    
+1. Name (Nome): Define um identificador único para a Form, permitindo referenciar o formulário em código.
+2. Text (Texto): Especifica o texto que aparecerá na barra de título da Form.
+3. Size (Tamanho): Define a largura e altura da Form em pixels.
+4. StartPosition (PosiçãoInicial): Determina onde a Form será exibida na inicialização. Pode ser configurado para exibir no centro da tela, na posição padrão ou em uma posição específica.
+5. BackColor (CorDeFundo): Define a cor de fundo da Form.
+6. ForeColor (CorDoTexto): Define a cor do texto na Form.
+7. Icon: Especifica o ícone que aparecerá na barra de título da Form.
+8. MaximizeBox (MaximizarCaixaDeControle): Indica se o botão de maximizar deve ser exibido na barra de título.
+9. MinimizeBox (MinimizarCaixaDeControle): Indica se o botão de minimizar deve ser exibido na barra de título.
+10. ControlBox (CaixaDeControle): Indica se a caixa de controle (que contém os botões Minimizar, Maximizar e Fechar) deve ser exibida.
+11. FormBorderStyle (EstiloDeBorda): Define o estilo de borda da Form, como janela normal, sem borda, borda fixa, etc.
+12. TopMost: Determina se a Form deve ser exibida como a janela superior, mesmo se não estiver ativa.    
+
+Essas são apenas algumas das propriedades disponíveis para configurar uma Form no Windows Forms. Cada propriedade oferece controle sobre diferentes aspectos do comportamento e da aparência da interface do usuário do aplicativo.    
+
+### Eventos das Forms    
+Em uma aplicação Windows Forms, eventos são ações ou ocorrências que podem ser detectadas e tratadas durante a execução do programa. Os eventos nas Forms são usados para responder a interações do usuário ou a mudanças de estado no aplicativo.     
+1. Load: O evento Load ocorre quando a Form é carregada pela primeira vez na memória. É frequentemente usado para realizar inicializações e configurações iniciais.
+```
+private void Form1_Load(object sender, EventArgs e)
+{
+    // Código a ser executado quando a Form é carregada.
+}
+```
+
+2. Click: O evento Click ocorre quando um controle é clicado pelo usuário. Pode ser associado a botões, caixas de texto, e outros controles interativos.        
+```
+private void button1_Click(object sender, EventArgs e)
+{
+    // Código a ser executado quando o botão é clicado.
+}
+```
+
+3. Closing e Closed: O evento Closing ocorre antes da Form ser fechada, enquanto o evento Closed ocorre após a Form ter sido fechada. Pode ser usado para realizar operações de limpeza ou salvar dados antes que a aplicação seja encerrada.        
+```
+private void Form1_Closing(object sender, CancelEventArgs e)
+{
+    // Código a ser executado antes do fechamento da Form.
+}
+
+private void Form1_Closed(object sender, EventArgs e)
+{
+    // Código a ser executado após o fechamento da Form.
+}
+```
+Esses são apenas alguns exemplos de eventos disponíveis em uma Form no Windows Forms. Cada evento permite que você associe código personalizado para lidar com interações do usuário ou alterações de estado.
