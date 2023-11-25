@@ -1130,6 +1130,289 @@ Da mesma forma que o IndexOf, você pode fornecer um parâmetro startIndex opcio
 int ultimoIndice = frase.LastIndexOf("o", 10);  // Começa a busca a partir do índice 10 (da direita para a esquerda)
 ```
 
+### Insert - Replace
+#### Método Insert:
+O método Insert é utilizado para inserir uma string ou caractere em uma posição específica dentro de outra string.     
+```
+string original = "Olá mundo!";
+string novaString = original.Insert(5, "meu ");
+Console.WriteLine(novaString); // Saída: Olá meu mundo!
+```
+
+#### Método Replace:
+O método Replace é usado para substituir todas as ocorrências de uma substring por outra substring.        
+```
+string original = "Hoje é um bom dia para aprender!";
+string modificada = original.Replace("bom", "ótimo");
+Console.WriteLine(modificada); // Saída: Hoje é um ótimo dia para aprender!
+```
+
+### Length - Substring
+#### Método Length:
+O método Length é usado para obter o número de caracteres em uma string.    
+```
+string minhaString = "Olá, mundo!";
+int comprimento = minhaString.Length;
+Console.WriteLine(comprimento); // Saída: 12
+```
+
+#### Método Substring:
+O método Substring é utilizado para obter uma subtring da string original, com base em um índice inicial e, opcionalmente, no comprimento da substring desejada.     
+```
+string minhaString = "Olá, mundo!";
+string subString1 = minhaString.Substring(5); // Pega a substring a partir do índice 5 até o final
+string subString2 = minhaString.Substring(0, 3); // Pega os primeiros 3 caracteres
+
+Console.WriteLine(subString1); // Saída: mundo!
+Console.WriteLine(subString2); // Saída: Olá
+```
+
+### Método Split    
+O método Split em C# é utilizado para dividir uma string em partes com base em um delimitador específico. As partes resultantes são armazenadas em um array de strings.        
+**Assinatura:**        
+`public string[] Split(params char[] separator);`        
+**separator: O caractere ou caracteres que serão usados como delimitadores para dividir a string. Este parâmetro é definido como um array de caracteres, mas você também pode fornecer múltiplos caracteres separadores usando o modificador params.**            
+
+Além disso, o método também aceita um parâmetro opcional `StringSplitOptions` para controlar o comportamento em relação a entradas vazias.     
+Ele possui dois valores:        
+-  `StringSplitOptions.None` -  o método incluirá substrings vazias no array resultante.
+-  `StringSplitOptions.RemoveEmptyEntries` -  o método exclui as substrings vazias do array resultante.        
+**Veja:**
+```
+// --------  StringSplitOptions.None -------- 
+string minhaString = "Maçã,,Banana,Laranja";
+char[] separadores = { ',' };
+string[] partes = minhaString.Split(separadores, StringSplitOptions.None);
+
+foreach (string parte in partes)
+{
+    Console.WriteLine($"'{parte}'");
+}
+
+// --------  Saída -------- 
+'Maçã'
+''
+'Banana'
+'Laranja'
+
+// -------- StringSplitOptions.RemoveEmptyEntries --------
+string minhaString = "Maçã,,Banana,Laranja";
+char[] separadores = { ',' };
+string[] partes = minhaString.Split(separadores, StringSplitOptions.RemoveEmptyEntries);
+
+foreach (string parte in partes)
+{
+    Console.WriteLine($"'{parte}'");
+}
+
+// --------  Saída -------- 
+'Maçã'
+'Banana'
+'Laranja'
+```
+É importante observar que você pode fornecer vários caracteres como delimitadores, como mostrado abaixo:        
+```
+string minhaString = "Maçã; Banana| Laranja, Morango";
+char[] separadores = { ',', ';', '|' };
+string[] partes = minhaString.Split(separadores, StringSplitOptions.RemoveEmptyEntries);
+
+foreach (string parte in partes)
+{
+    Console.WriteLine(parte.Trim());
+}
+```
+
+### StartsWith - EndsWith
+#### Método StartsWith:
+O método StartsWith verifica se uma string começa com uma determinada substring. A assinatura básica é a seguinte:        
+```
+public bool StartsWith(string value);
+public bool StartsWith(string value, StringComparison comparisonType);
+```
+- value: A substring que se deseja verificar se a string começa.
+- comparisonType: (Opcional) Um valor da enumeração StringComparison que especifica o modo como a comparação de strings deve ser realizada.        
+**Exemplo:**
+```
+string minhaString = "Olá, mundo!";
+
+bool comecaComOla = minhaString.StartsWith("Olá");
+bool comecaComOlaIgnoreCase = minhaString.StartsWith("olá", StringComparison.OrdinalIgnoreCase);
+
+Console.WriteLine(comecaComOla); // Saída: True
+Console.WriteLine(comecaComOlaIgnoreCase); // Saída: True
+```
+No exemplo acima, StartsWith("Olá") verifica se a string começa com "Olá" de forma case-sensitive, enquanto StartsWith("olá", StringComparison.OrdinalIgnoreCase) faz a verificação sem considerar o caso (case-insensitive).        
+
+#### Método EndsWith:    
+O método EndsWith verifica se uma string termina com uma determinada substring.        
+**Exemplo:**        
+```
+string minhaString = "Olá, mundo!";
+
+bool terminaComMundo = minhaString.EndsWith("mundo!");
+bool terminaComMundoIgnoreCase = minhaString.EndsWith("MUNDO!", StringComparison.OrdinalIgnoreCase);
+
+Console.WriteLine(terminaComMundo); // Saída: True
+Console.WriteLine(terminaComMundoIgnoreCase); // Saída: True
+```
+
+#### Parâmetro StringComparison:
+O parâmetro StringComparison é opcional e controla como a comparação de strings deve ser realizada. Ele é uma enumeração que fornece diferentes opções, como case-sensitive, case-insensitive, cultura específica, entre outras. Algumas opções comuns são:        
+- StringComparison.Ordinal: Realiza uma comparação ordinal (binária) de strings.
+- StringComparison.OrdinalIgnoreCase: Realiza uma comparação ordinal (binária) sem considerar o case sensitive.
+- StringComparison.CurrentCulture: Usa as regras de comparação de cultura atual.
+- StringComparison.CurrentCultureIgnoreCase: Usa as regras de comparação de cultura atual sem considerar o case sensitive.
+
+### Trim - TrimStart - TrimEnd    
+Os métodos `Trim`, `TrimStart` e `TrimEnd` em C# são utilizados para remover caracteres de espaçamento (como espaços em branco, tabulações, entre outros) de uma string. Esses métodos retornam uma nova string sem os caracteres de espaçamento, mantendo os caracteres não espaçados no interior da string.        
+
+#### Método Trim:
+O método Trim remove os caracteres de espaçamento do início e do final de uma string.            
+```
+string minhaString = "   Olá, mundo!   ";
+string stringSemEspacos = minhaString.Trim();
+
+Console.WriteLine(stringSemEspacos); // Saída: "Olá, mundo!"
+```
+
+#### Método TrimStart:
+O método TrimStart remove os caracteres de espaçamento apenas do início (começo) de uma string.        
+```
+string minhaString = "   Olá, mundo!   ";
+string stringSemEspacosNoInicio = minhaString.TrimStart();
+
+Console.WriteLine(stringSemEspacosNoInicio); // Saída: "Olá, mundo!   "
+```
+
+#### Método TrimEnd:
+O método TrimEnd remove os caracteres de espaçamento apenas do final (fim) de uma string.            
+```
+string minhaString = "   Olá, mundo!   ";
+string stringSemEspacosNoFim = minhaString.TrimEnd();
+
+Console.WriteLine(stringSemEspacosNoFim); // Saída: "   Olá, mundo!"
+```        
+
+#### Observação sobre o parâmetro trimChars:
+Para todos os três métodos, você pode fornecer um parâmetro opcional trimChars, que são os caracteres específicos que você deseja remover. Se você não fornecer esse parâmetro, o método removerá os espaços em branco padrão.        
+**Exemplo:**        
+```
+string minhaString = " -  Olá, mundo! -  ";
+char[] charsParaRemover = { ' ', '!', '-' };
+string stringModificada = minhaString.Trim(charsParaRemover);
+
+Console.WriteLine(stringModificada); // Saída: "Olá, mundo"
+```
+
+### CompareTo - Equals        
+Os métodos CompareTo e Equals em C# estão relacionados à comparação de strings, mas têm propósitos ligeiramente diferentes.        
+
+#### Método CompareTo:
+O método CompareTo é usado para comparar duas strings lexicograficamente (maneira de ordenar elementos, como palavras ou strings, com base na ordem dos caracteres em seu conjunto. Especificamente, ela considera a ordem alfabética dos caracteres) e determinar a ordem relativa entre elas.        
+**O método retorna um valor inteiro que indica a relação entre as duas strings:**
+
+- Se o valor retornado for menor que zero, indica que a instância de string precede strB na ordem lexicográfica.
+- Se o valor for zero, indica que as duas strings são iguais na ordem lexicográfica.
+- Se o valor for maior que zero, indica que a instância de string segue strB na ordem lexicográfica.        
+
+**Exemplo:**    
+```
+string string1 = "maçã";
+string string2 = "banana";
+
+int resultado = string1.CompareTo(string2);
+
+if (resultado < 0)
+{
+    Console.WriteLine("string1 precede string2.");
+}
+else if (resultado == 0)
+{
+    Console.WriteLine("As strings são iguais.");
+}
+else
+{
+    Console.WriteLine("string1 segue string2.");
+}
+```
+**Saída:**        
+string1 segue string2.        
+a string1 ("maçã") segue a string2 ("banana") lexicograficamente, pois 'm' vem depois de 'b' na ordem alfabética.         
+
+#### Método Equals:
+O método Equals é usado para verificar se duas strings são iguais.        
+Ele retorna true se as duas strings são iguais e false caso contrário. O método Equals também possui uma sobrecarga que permite especificar o tipo de comparação, incluindo comparação de cultura e comparação de maiúsculas e minúsculas.     
+**Exemplo:**        
+```
+string string1 = "Maçã";
+string string2 = "maçã";
+
+bool saoIguais = string1.Equals(string2, StringComparison.OrdinalIgnoreCase);
+
+Console.WriteLine(saoIguais); // Saída: True
+```
+
+### Format
+É usado para criar uma string formatada, substituindo espaços reservados por valores específicos. Os espaços reservados são indicados por posições específicas na string de formato e são preenchidos pelos argumentos fornecidos.    
+**Sintaxe:**    
+`string resultado = string.Format(string formato, params object[] args);`        
+- formato: A string de formato contendo espaços reservados.
+- args: Os argumentos que substituirão os espaços reservados na string de formato.        
+
+**Exemplo básico:**        
+```
+int numero = 42;
+string texto = "Olá";
+double valor = 123.45;
+
+string resultado = string.Format("{0} {1} {2}", numero, texto, valor);
+Console.WriteLine(resultado);
+```
+Neste exemplo, {0}, {1}, e {2} são espaços reservados que serão substituídos pelos valores correspondentes de numero, texto, e valor.
+
+#### Formatando Números:
+O método Format oferece várias opções para formatar números, incluindo formatos para moeda, porcentagem e controle sobre casas decimais.        
+```
+decimal preco = 123.4567m;
+
+// Formato padrão
+string formatoPadrao = string.Format("Preço: {0}", preco); // Preço: 123.4567
+
+// Formatando como moeda
+string formatoMoeda = string.Format("Preço: {0:C}", preco); // Preço: R$ 123,46
+
+// Formatando como porcentagem
+string formatoPorcentagem = string.Format("Taxa de Desconto: {0:P}", 0.15); // Taxa de Desconto: 15%
+
+// Formatando casas decimais
+string formatoMoeda = string.Format("Preço: {0:P3}", preco); // Preço: R$ 123,460
+```
+
+#### Formatando Datas e Horas:
+Você pode formatar datas e horas de várias maneiras usando o método Format. Por exemplo:        
+```
+DateTime agora = DateTime.Now;
+
+// Formato padrão de data e hora
+string formatoPadraoDataHora = string.Format("Data e Hora: {0:D}", agora); 
+
+// Formato personalizado
+string formatoPersonalizado = string.Format("Data: {0:dd/MM/yyyy}, Hora: {0:HH:mm:ss}", agora); 
+```
+
+**Você pode simplificar ainda mais a formatação de strings em C# usando strings interpoladas, marcadas pelo operador $. Isso elimina a necessidade de usar string.Format e torna o código mais conciso.**        
+**Exemplo:**        
+```
+int quantidade = 5;
+double precoUnitario = 19.99;
+
+string resultado = $"Quantidade: {quantidade:D} unidades, Preço Unitário: {precoUnitario:C}";
+Console.WriteLine(resultado);
+// Saída: Quantidade: 5 unidades, Preço Unitário: R$ 19,99
+```
+
+A diferença está na sintaxe das duas formas de realizar a formatação. A interpolação de string, não requer que seja adicionado as strings que serão inseridas após a string, e sim no interior da mesma utilizandos as {}.        
+
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
 
