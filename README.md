@@ -1089,19 +1089,45 @@ Lembre-se de que o método Contains é sensível a maiúsculas e minúsculas. Se
 
 ### ToUpper - ToLower    
 Os métodos ToUpper e ToLower são métodos da classe String em C# que são usados para converter os caracteres em uma string para maiúsculas ou minúsculas, respectivamente. Ambos os métodos **retornam uma nova string** que contém a versão modificada da string original, sem alterar a string original.        
-**ToUpper**    
+#### ToUpper    
 O método ToUpper converte todos os caracteres em maiúsculas.    
 ```
 string originalString = "Hello, World!";
 string upperCaseString = originalString.ToUpper();
 Console.WriteLine(upperCaseString); // Saída: HELLO, WORLD!
 ```        
-**ToLower**    
+#### ToLower   
 O método ToLower converte todos os caracteres em minúsculas.
 ```
 string originalString = "Hello, World!";
 string lowerCaseString = originalString.ToLower();
 Console.WriteLine(lowerCaseString); // Saída: hello, world!
+```
+
+### IndexOf - LastIndexOf    
+#### Método IndexOf
+O método IndexOf é usado para encontrar a primeira ocorrência de um caractere ou substring em uma string.     
+**Exemplo:**    
+```
+string frase = "Olá, mundo!";
+int indice = frase.IndexOf("mundo");
+Console.WriteLine(indice);  // Saída: 5
+```
+**Você também pode fornecer um parâmetro opcional startIndex para começar a busca a partir de uma posição específica na string:**    
+```
+int indice = frase.IndexOf("o", 3);  // Começa a busca a partir do índice 3
+```
+
+#### Método LastIndexOf    
+O método LastIndexOf é semelhante ao IndexOf, mas ele retorna o índice baseado em zero da última ocorrência da string ou caractere especificado:    
+```
+string frase = "Olá, mundo! Mundo, Olá!";
+int ultimoIndice = frase.LastIndexOf("mundo");
+Console.WriteLine(ultimoIndice);  // Saída: 15
+```
+Da mesma forma que o IndexOf, você pode fornecer um parâmetro startIndex opcional para começar a busca a partir de uma posição específica, mas neste caso, a busca é realizada da direita para a esquerda:    
+```
+int ultimoIndice = frase.LastIndexOf("o", 10);  // Começa a busca a partir do índice 10 (da direita para a esquerda)
 ```
 
 ## Windows Forms App
