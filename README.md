@@ -1442,7 +1442,94 @@ else
     Console.WriteLine("Não foi possível converter a string em um número inteiro.");
 }
 ```
-Neste exemplo, como a string "abc" não pode ser convertida para um número inteiro, o bloco else será executado e a mensagem de erro será exibida. O método TryParse é útil quando você deseja evitar exceções e prefere lidar com casos de falha de forma mais controlada.
+Neste exemplo, como a string "abc" não pode ser convertida para um número inteiro, o bloco else será executado e a mensagem de erro será exibida. O método TryParse é útil quando você deseja evitar exceções e prefere lidar com casos de falha de forma mais controlada.            
+
+### Método ToString()
+É uma função presente na classe base Object que é herdada por todas as outras classes. Esse método é utilizado para converter um objeto em sua representação de string. Ele é frequentemente utilizado para exibir informações legíveis sobre um objeto.        
+No entanto, muitas classes em C# sobrescrevem esse método para fornecer uma representação mais significativa do objeto em questão. **Além disso, diversas formatações podem ser aplicadas ao utilizar sobrecargas específicas do método ToString() ou através do uso de formatadores de string.**        
+
+Algumas formas comuns de utilizar o método ToString() em C#:        
+#### Sem formatação específica:
+```
+int numero = 42;
+string resultado = numero.ToString();
+// resultado: "42"
+```
+
+#### Com formatação específica:    
+```
+DateTime data = DateTime.Now;
+string resultado = data.ToString("yyyy-MM-dd HH:mm:ss");
+// resultado: "2023-11-27 14:30:00"
+```
+#### Utilizando formatação de data:    
+
+##### Data curta:   
+```
+DateTime data = DateTime.Now;
+string resultado = data.ToString("d");
+// resultado: "11/27/2023"
+```
+
+##### Data longa:
+```
+DateTime data = DateTime.Now;
+string resultado = data.ToString("D");
+// resultado: "Monday, November 27, 2023"
+```
+
+##### Dia da Semana Abreviado e Mês por Extenso:
+```
+DateTime data = DateTime.Now;
+string resultado = data.ToString("ddd, MMMM dd, yyyy");
+// resultado: "Mon, November 27, 2023"
+```
+
+#### Utilizando formatação de número:    
+
+##### Número como moeda
+```
+double valor = 12345.6789;
+string resultado = valor.ToString("C"); // Formata como moeda
+// resultado: "$12,345.68"
+```
+##### Moeda com Símbolo e Duas Casas Decimais:
+```
+decimal preco = 456.789m;
+string resultado = preco.ToString("C2");
+// resultado: "$456.79"
+```
+
+##### Porcentagem:
+```
+double taxa = 0.25;
+string resultado = taxa.ToString("P");
+// resultado: "25.00%"
+```        
+
+##### Número em Notação Científica:
+```
+double valor = 12345.6789;
+string resultado = valor.ToString("E");
+// resultado: "1.234568E+004"
+```
+
+
+
+##### Número com Separadores de Milhares e Duas Casas Decimais:
+```
+int numero = 1234567;
+string resultado = numero.ToString("#,##0.00");
+// resultado: "1,234,567.00"
+```
+
+#### Utilizando formatação personalizada:    
+```
+decimal preco = 123.45m;
+string resultado = preco.ToString("#,##0.00");
+// resultado: "123.45"
+```
+
 
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
