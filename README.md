@@ -1514,8 +1514,6 @@ string resultado = valor.ToString("E");
 // resultado: "1.234568E+004"
 ```
 
-
-
 ##### Número com Separadores de Milhares e Duas Casas Decimais:
 ```
 int numero = 1234567;
@@ -1530,6 +1528,175 @@ string resultado = preco.ToString("#,##0.00");
 // resultado: "123.45"
 ```
 
+### Classe Math
+A classe Math está contida no namespace System e fornece métodos para realizar operações matemáticas comuns. Essa classe é estática, o que significa que você não precisa criar uma instância dela para usar seus métodos. 
+
+#### Operações Básicas:
+
+##### Math.Abs (Valor Absoluto):
+```
+csharp
+Copy code
+int resultado = Math.Abs(-5);
+// resultado: 5
+```
+
+##### Math.Ceiling:    
+```
+double numero = 4.3;
+double resultado = Math.Ceiling(numero);
+// resultado: 5
+```
+
+##### Math.Floor: 
+```
+double numero = 4.8;
+double resultado = Math.Floor(numero);
+// resultado: 4
+```
+
+#### Funções Trigonométricas:
+
+##### Math.Sin, Math.Cos, Math.Tan:
+```
+double anguloRad = Math.PI / 4; // 45 graus em radianos
+double seno = Math.Sin(anguloRad);
+double cosseno = Math.Cos(anguloRad);
+double tangente = Math.Tan(anguloRad);
+```
+
+#### Funções Logarítmicas e Exponenciais:
+
+##### Math.Log (Logaritmo Natural):
+```
+double numero = 10;
+double resultado = Math.Log(numero);
+// resultado: 2.30258509299405 (logaritmo natural de 10)
+```
+
+##### Math.Exp (Exponencial):
+```
+double expoente = 2;
+double resultado = Math.Exp(expoente);
+// resultado: 7.38905609893065 (e elevado à potência de 2)
+```
+
+#### Funções de Potência e Raiz:
+
+##### Math.Pow (Potência):
+```
+double baseNumero = 2;
+double expoente = 3;
+double resultado = Math.Pow(baseNumero, expoente);
+// resultado: 8 (2 elevado à potência de 3)
+```
+
+##### Math.Sqrt (Raiz Quadrada):
+```
+double numero = 25;
+double resultado = Math.Sqrt(numero);
+// resultado: 5
+```
+
+#### Constantes Matemáticas:
+
+##### Math.PI e Math.E:
+```
+double pi = Math.PI; // Valor de π (pi)
+double e = Math.E;   // Valor de e (número de Euler)
+```
+
+## Coleções avançadas
+
+### List    
+A List é uma das coleções mais utilizadas em C# e está presente no namespace System.Collections.Generic. Ela representa uma lista dinâmica que pode crescer ou diminuir em tamanho durante a execução do programa.          
+
+**Características Principais:**
+1. Dinamicamente Redimensionável: A List pode aumentar ou diminuir de tamanho dinamicamente para acomodar a quantidade de elementos que você deseja armazenar.
+2. Aceita Elementos de Qualquer Tipo: Pode armazenar elementos de qualquer tipo, incluindo tipos complexos como classes personalizadas.
+3. Indexada: Os elementos em uma List podem ser acessados por meio de índices, começando do zero.
+
+A List é uma estrutura de dados versátil e amplamente utilizada em cenários onde a flexibilidade de uma lista dinâmica é necessária.
+
+### HashSet
+É uma coleção que representa uma tabela de hash. Ele faz parte do namespace System.Collections.Generic e é utilizado para armazenar conjuntos de elementos **sem permitir duplicatas**. **Diferentemente da List, o HashSet não mantém uma ordem específica dos elementos e não permite indexação direta.**        
+
+**Características Principais:**        
+1. Sem Duplicatas: O HashSet não permite elementos duplicados. Se você tentar adicionar um elemento já presente, a operação não terá efeito.
+2. Busca Eficiente: A busca de um elemento em um HashSet é eficiente devido à sua implementação de tabela de hash.
+3. Não Indexado: Os elementos em um HashSet não são acessados por meio de índices como em um List. Portanto, não há garantia de ordem específica, no entanto, existem outras formas de ter acesso aos índices dessa coleção como a Iteração com `foreach`, verificação de pertencimento com `.Contains` ou união ou interseção com outro HashSet.        
+
+O HashSet é útil quando você precisa armazenar elementos únicos e realizar operações de conjunto eficientes, como união, interseção e verificação de subconjuntos. Ele é especialmente eficiente para buscas rápidas em grandes conjuntos de dados.
+
+### Dictionary
+A coleção Dictionary<TKey, TValue> representa uma coleção de pares chave-valor, onde cada chave é única e associada a um valor específico. Ela está localizada no namespace System.Collections.Generic.        
+
+**Características Principais:**
+1. Pares Chave-Valor: Cada elemento no Dictionary é um par chave-valor, onde a chave é única dentro do dicionário.
+2. Eficiente para Buscas: O acesso a valores por meio de chaves é eficiente devido à implementação interna utilizando tabelas de hash.
+3. Não Garante Ordem: Os elementos em um Dictionary não são garantidos para estar em uma ordem específica. Se a ordem dos elementos é importante, considere usar a coleção SortedDictionary ou OrderedDictionary.
+
+**Keys e Values - Obtém Coleções de Chaves e Valores:**        
+```
+var chaves = idadePorNome.Keys;
+var valores = idadePorNome.Values;
+```        
+
+O Dictionary é uma estrutura de dados extremamente útil quando você precisa associar valores a chaves únicas e deseja obter acesso eficiente aos valores por meio das chaves. A implementação interna do Dictionary utiliza tabelas de hash para proporcionar um acesso eficiente aos elementos.            
+
+### SortedList
+É uma coleção que combina características de um dicionário (Dictionary) e uma lista ordenada (List). 
+
+**Características Principais:**        
+1. Ordenação Automática: Ao contrário de um Dictionary, a SortedList mantém seus elementos automaticamente ordenados com base nas chaves.
+2. Chaves Únicas: Cada chave em uma SortedList é única.
+3. Acesso Eficiente: Assim como em um Dictionary, o acesso aos elementos por meio de chaves é eficiente.
+4. Indexação por Índice Numérico: Além do acesso por chave, a SortedList permite acesso a elementos por índice numérico, semelhante a uma lista.
+5. Dinâmica: A SortedList pode crescer ou diminuir dinamicamente conforme os elementos são adicionados ou removidos.            
+    
+É importante observar que, embora a SortedList seja útil para manter elementos ordenados automaticamente, ela pode ter um desempenho inferior ao Dictionary para algumas operações, especialmente inserções e remoções frequentes, devido à necessidade de manter a ordem dos elementos.        
+
+
+### SortedDictionary        
+É uma coleção que combina as características de um dicionário (Dictionary) e uma árvore de pesquisa binária ordenada. Assim como o SortedList, o SortedDictionary mantém automaticamente a ordem de suas chaves. No entanto, o SortedDictionary utiliza uma árvore de pesquisa binária internamente, o que pode resultar em desempenho mais eficiente em algumas operações de inserção e remoção quando comparado ao SortedList.        
+**Características Principais:**       
+1. Ordenação Automática: Os elementos são automaticamente ordenados com base nas chaves.
+2. Chaves Únicas: Cada chave em um SortedDictionary é única.
+3. Acesso Eficiente: O acesso a elementos por meio de chaves é eficiente, assim como em um Dictionary.
+4. Desempenho em Inserção e Remoção: O SortedDictionary pode ser mais eficiente em operações de inserção e remoção frequentes em comparação com o SortedList, devido à sua implementação usando uma árvore de pesquisa binária.
+5. Dinâmica: O SortedDictionary pode crescer ou diminuir dinamicamente conforme os elementos são adicionados ou removidos.            
+
+O SortedDictionary é uma escolha útil quando você precisa de uma coleção ordenada, e a eficiência em termos de inserções e remoções frequentes é uma consideração importante.            
+
+### SortedSet    
+É uma coleção que representa um conjunto de elementos únicos ordenados. Combina as características de um conjunto (sem elementos duplicados) com a ordenação automática dos elementos.        
+**Características Principais:**    
+1. Conjunto Único: Não permite elementos duplicados. Cada elemento no SortedSet é único.
+2. Ordenação Automática: Os elementos são automaticamente ordenados em ordem crescente. A ordenação é baseada na comparação natural dos elementos ou em um comparador fornecido durante a criação do SortedSet.
+3. Eficiência em Inserção e Busca: O SortedSet oferece eficiência em operações de inserção, remoção e busca devido à sua implementação interna usando uma árvore de pesquisa binária.
+4. Dinâmica: O SortedSet pode crescer ou diminuir dinamicamente conforme os elementos são adicionados ou removidos.            
+
+O SortedSet é uma escolha útil quando você precisa de uma coleção ordenada de elementos únicos e deseja realizar operações eficientes de inserção, remoção e busca. Se a ordenação dos elementos é uma prioridade e a exclusão de duplicatas é necessária, o SortedSet oferece uma solução eficiente e conveniente.
+
+### Queue
+A coleção Queue representa uma fila, que é uma estrutura de dados do tipo FIFO (First-In-First-Out), onde o primeiro elemento inserido é o primeiro a ser removido.            
+**Características Principais:**         
+2. FIFO: O elemento que entra primeiro na fila é o primeiro a ser removido. Novos elementos são adicionados ao final da fila.
+3. Dinâmica: A Queue pode crescer ou diminuir dinamicamente conforme elementos são adicionados ou removidos.
+4. Operações Principais: As operações principais são **Enqueue** (para adicionar elementos no final da fila) e **Dequeue** (para remover o elemento no início da fila).
+5. Acesso ao Elemento no Início: A operação **Peek** permite visualizar o elemento que está no início da fila sem removê-lo.            
+
+A Queue é frequentemente utilizada em situações em que o primeiro elemento que entra deve ser o primeiro a ser processado, como em algoritmos de processamento de dados em lote, simulação de eventos em tempo real e muitas outras aplicações.
+
+### Stack
+A coleção Stack representa uma pilha, que é uma estrutura de dados do tipo LIFO (Last-In-First-Out), onde o último elemento inserido é o primeiro a ser removido.            
+**Características Principais:**                
+1. LIFO: O elemento que entra por último na pilha é o primeiro a ser removido. Novos elementos são adicionados no topo da pilha.
+2. Dinâmica: A Stack pode crescer ou diminuir dinamicamente conforme elementos são adicionados ou removidos.
+3. Operações Principais: As operações principais são Push (para adicionar elementos no topo da pilha) e Pop (para remover o elemento no topo da pilha).
+4. Acesso ao Elemento no Topo: A operação Peek permite visualizar o elemento que está no topo da pilha sem removê-lo.                    
+
+A Stack é frequentemente utilizada em situações em que a ordem de processamento dos elementos é inversa à ordem em que foram inseridos, como na implementação de algoritmos de parsing, avaliação de expressões matemáticas, e em muitas outras aplicações.
 
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
