@@ -1411,7 +1411,38 @@ Console.WriteLine(resultado);
 // Saída: Quantidade: 5 unidades, Preço Unitário: R$ 19,99
 ```
 
-A diferença está na sintaxe das duas formas de realizar a formatação. A interpolação de string, não requer que seja adicionado as strings que serão inseridas após a string, e sim no interior da mesma utilizandos as {}.        
+A diferença está na sintaxe das duas formas de realizar a formatação. A interpolação de string, não requer que seja adicionado as strings que serão inseridas após a string, e sim no interior da mesma utilizandos as {}.            
+
+## Manipulação de números
+### Método Parse e TryParse
+Frequentemente utilizados para converter strings em valores de outros tipos de dados, como números (inteiros, decimais, etc.) ou datas. Ambos os métodos são comumente encontrados em tipos de dados primitivos, como int, double, DateTime, etc.            
+
+#### Método Parse:
+O método Parse converte uma representação de string de um valor para o tipo de dado correspondente. Por exemplo, se você tem uma string que representa um número inteiro, pode usar o método int.Parse para converter essa string em um inteiro.         
+```
+string numeroComoString = "123";
+int numeroComoInteiro = int.Parse(numeroComoString);
+
+Console.WriteLine(numeroComoInteiro); // Imprime 123
+```
+**No entanto, é importante notar que o método Parse pode gerar uma exceção FormatException se a string não puder ser convertida para o tipo desejado. Portanto, é apropriado usar Parse quando você está razoavelmente certo de que a conversão será bem-sucedida e está disposto a lidar com exceções se algo der errado.**            
+
+#### Método TryParse:
+O método TryParse é uma versão mais segura, pois não gera exceções em caso de falha na conversão. Ele retorna um valor booleano para indicar se a conversão foi bem-sucedida ou não. Se a conversão for bem-sucedida, o valor convertido é retornado através de um parâmetro de saída.            
+```
+string numeroComoString = "abc";
+int numeroComoInteiro;
+
+if (int.TryParse(numeroComoString, out numeroComoInteiro))
+{
+    Console.WriteLine(numeroComoInteiro);
+}
+else
+{
+    Console.WriteLine("Não foi possível converter a string em um número inteiro.");
+}
+```
+Neste exemplo, como a string "abc" não pode ser convertida para um número inteiro, o bloco else será executado e a mensagem de erro será exibida. O método TryParse é útil quando você deseja evitar exceções e prefere lidar com casos de falha de forma mais controlada.
 
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
@@ -1497,3 +1528,5 @@ private void label1_MouseLeave(object sender, EventArgs e)
     // Código a ser executado quando o mouse deixa a área da etiqueta.
 }
 ```
+
+
