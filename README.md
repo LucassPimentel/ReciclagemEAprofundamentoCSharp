@@ -1698,6 +1698,145 @@ A coleção Stack representa uma pilha, que é uma estrutura de dados do tipo LI
 
 A Stack é frequentemente utilizada em situações em que a ordem de processamento dos elementos é inversa à ordem em que foram inseridos, como na implementação de algoritmos de parsing, avaliação de expressões matemáticas, e em muitas outras aplicações.
 
+## Classes e Estruturas Importantes
+
+### Classe Random
+A classe Random faz parte do namespace System no C# e é usada para gerar números pseudoaleatórios. Ela fornece métodos para gerar valores inteiros, ponto flutuante e outros tipos de dados de forma aparentemente aleatória. No entanto, é importante observar que os números gerados não são verdadeiramente aleatórios, mas sim determinísticos, baseados em um valor inicial chamado de "seed" (semente).        
+
+**Construtores:**        
+1. Random(): Cria uma instância da classe Random usando uma semente baseada no relógio do sistema.
+2. Random(int seed): Cria uma instância da classe Random usando a semente especificada. Duas instâncias criadas com a mesma semente produzirão a mesma sequência de números aleatórios.
+                    
+**Métodos Principais:**
+1. Next(): Retorna um número inteiro não negativo.
+2. Next(int maxValue): Retorna um número inteiro não negativo menor que o valor especificado.
+3. Next(int minValue, int maxValue): Retorna um número inteiro dentro do intervalo especificado.
+4. NextDouble(): Retorna um número de ponto flutuante no intervalo de 0,0 a 1,0.
+5. NextBytes(byte[] buffer): Preenche um array de bytes com valores aleatórios.
+                
+**Uso com Cuidado:**
+Se a semente não for especificada, a classe Random usará o relógio do sistema para obter uma semente inicial. Isso pode ser problemático se várias instâncias forem criadas rapidamente, pois elas podem ter a mesma semente, resultando em sequências idênticas de números aleatórios.            
+
+**Exemplo de uso**
+```
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Criando uma instância de Random com semente padrão (baseada no relógio do sistema)
+        Random random = new Random();
+
+        // Gerando números aleatórios entre 1 e 100
+        int randomNumber = random.Next(1, 101);
+        Console.WriteLine($"Número aleatório: {randomNumber}");
+
+        // Gerando um número de ponto flutuante
+        double randomDouble = random.NextDouble();
+        Console.WriteLine($"Número de ponto flutuante aleatório: {randomDouble}");
+    }
+}
+```
+
+### Estrutura TimeSpan
+O TimeSpan é uma estrutura no C# que representa uma duração ou intervalo de tempo. Isso pode ser útil quando você precisa lidar com operações que envolvem tempo, como calcular a diferença entre datas ou representar um período específico.        
+
+**Conceitos importantes:**            
+
+1. **Construção de um TimeSpan:**            
+Você pode criar um TimeSpan de diversas maneiras. Uma das formas mais comuns é passar horas, minutos e segundos como parâmetros para o construtor:            
+```
+TimeSpan meuTimeSpan = new TimeSpan(1, 30, 0); // Representa 1 hora e 30 minutos
+```
+Aqui, 1 é o número de horas, 30 é o número de minutos, e 0 é o número de segundos.
+
+2. **Propriedades do TimeSpan:**            
+Days, Hours, Minutes, Seconds, Milliseconds: Essas propriedades permitem acessar cada parte do intervalo de tempo.            
+```
+Console.WriteLine($"Horas: {meuTimeSpan.Hours}, Minutos: {meuTimeSpan.Minutes}");
+```
+
+
+3. **Operações com TimeSpan:**
+Você pode realizar várias operações matemáticas com TimeSpan, como adição e subtração:            
+```
+TimeSpan outroTimeSpan = new TimeSpan(0, 45, 0); // Representa 45 minutos
+TimeSpan soma = meuTimeSpan + outroTimeSpan; // Adição
+TimeSpan diferenca = meuTimeSpan - outroTimeSpan; // Subtração
+```
+
+
+4. **Formatando TimeSpan:**
+Você pode formatar um TimeSpan para exibição amigável:                    
+```
+Console.WriteLine(soma.ToString()); // Saída: "2:15:00" (2 horas e 15 minutos)
+```
+
+
+5. **Método TimeSpan.FromX:**             
+Existem métodos estáticos na classe TimeSpan que permitem criar instâncias com base em unidades específicas, como TimeSpan.FromDays, TimeSpan.FromHours, TimeSpan.FromMinutes, etc. Isso facilita a criação de TimeSpan usando uma unidade específica.                    
+`TimeSpan tresDias = TimeSpan.FromDays(3); // Representa 3 dias`        
+
+6. **Comparação de TimeSpan:**            
+Você pode comparar dois TimeSpan usando operadores de comparação, como <, >, ==, etc.            
+```
+if (meuTimeSpan > outroTimeSpan)
+{
+    Console.WriteLine("meuTimeSpan é maior que outroTimeSpan");
+}
+```                
+
+### DateTime
+DateTime é uma parte fundamental do namespace System no C# e é usada para representar pontos específicos no tempo, incluindo informações sobre a data e hora.         
+
+**Conceitos importantes:**               
+
+1. **Criação de uma instância:**
+Você pode criar uma instância de DateTime de várias maneiras. Uma forma comum é usar o construtor que aceita ano, mês, dia, hora, minuto e segundo:            
+```
+DateTime minhaData = new DateTime(2023, 1, 15, 14, 30, 0);
+```
+Você também pode usar DateTime.Now para obter a data e hora atuais do sistema.
+
+2. **Propriedades de DateTime:**
+- Year, Month, Day, Hour, Minute, Second: Permitem acessar as partes individuais da data e hora.
+```
+int ano = minhaData.Year;
+int mes = minhaData.Month;
+int dia = minhaData.Day;
+```            
+
+- DayOfWeek: Retorna o dia da semana.            
+`DayOfWeek diaDaSemana = minhaData.DayOfWeek;`
+
+3.** Operações com DateTime:**            
+Você pode realizar várias operações matemáticas com DateTime, como adição e subtração usando TimeSpan.            
+```
+DateTime outraData = minhaData.AddDays(7); // Adiciona 7 dias
+TimeSpan diferenca = outraData - minhaData; // Retorna um TimeSpan representando a diferença
+```            
+4. **Formatação de DateTime:**            
+Você pode formatar um DateTime para uma string usando o método ToString ou especificadores de formato.            
+```
+string formatoCurto = minhaData.ToString("d"); // Exibe a data no formato curto ("15/01/2023")
+string formatoLongo = minhaData.ToString("D"); // Exibe a data e hora no formato longo ("15 de janeiro de 2023 14:30:00")
+```            
+
+5. **Conversão para TimeSpan:**                
+Você pode subtrair duas instâncias de DateTime para obter um TimeSpan representando a diferença entre elas.            
+```
+DateTime inicio = new DateTime(2023, 1, 1);
+DateTime fim = new DateTime(2023, 1, 15);
+TimeSpan duracao = fim - inicio; // Representa a diferença entre as datas
+```
+
+6. **Métodos estáticos úteis:**
+- DateTime.Now: Retorna a data e hora atuais.
+- DateTime.UtcNow: Retorna a data e hora atuais no formato UTC (universal).
+- DateTime.Parse e DateTime.TryParse: Permitem converter uma string em uma instância de DateTime.            
+`DateTime dataConvertida = DateTime.Parse("2023-01-15");`
+
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
 
