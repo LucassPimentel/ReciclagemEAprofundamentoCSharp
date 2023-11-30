@@ -1837,6 +1837,60 @@ TimeSpan duracao = fim - inicio; // Representa a diferença entre as datas
 - DateTime.Parse e DateTime.TryParse: Permitem converter uma string em uma instância de DateTime.            
 `DateTime dataConvertida = DateTime.Parse("2023-01-15");`
 
+
+### Environment 
+A classe Environment faz parte do namespace System e fornece informações sobre o ambiente em que o programa está sendo executado. Ela contém métodos e propriedades que ajudam a obter informações sobre o sistema operacional, o computador e o processo em execução.            
+**Propriedades Principais:**            
+```
+1. // CommandLine
+   string commandLine = Environment.CommandLine;
+   Console.WriteLine($"Command Line: {commandLine}");
+
+2. // CurrentDirectory
+   string currentDirectory = Environment.CurrentDirectory;
+   Console.WriteLine($"Current Directory: {currentDirectory}");
+
+3. // MachineName
+   string machineName = Environment.MachineName;
+   Console.WriteLine($"Machine Name: {machineName}");
+
+4. // UserName
+   string userName = Environment.UserName;
+   Console.WriteLine($"User Name: {userName}");
+
+5. // OSVersion
+   OperatingSystem os = Environment.OSVersion;
+   Console.WriteLine($"OS Version: {os.Version}");
+```
+
+**Métodos Importantes:**            
+**GetFolderPath**        
+Retorna o caminho para um diretório especial do sistema.            
+```
+string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+Console.WriteLine($"My Documents Path: {myDocumentsPath}");
+```
+
+**Exit**        
+Termina o processo do aplicativo com um código de saída especificado.            
+```
+Environment.Exit(0); // Saída bem-sucedida
+```
+
+**GetEnvironmentVariables**            
+Obtém uma coleção de variáveis de ambiente para o processo atual.            
+```
+IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+foreach (DictionaryEntry entry in environmentVariables)
+{
+    Console.WriteLine($"{entry.Key} = {entry.Value}");
+}
+```
+Esses são apenas alguns exemplos do que a classe Environment pode oferecer. Ela é útil para obter informações sobre o ambiente em tempo de execução e pode ser especialmente útil em cenários onde você precisa adaptar o comportamento do seu programa com base nas condições do sistema.
+
+### Threads
+
+
 ## Windows Forms App
 O Windows Forms App é uma tecnologia de desenvolvimento de aplicativos para o sistema operacional Windows, fornecida pela Microsoft. Ele faz parte do conjunto de ferramentas de desenvolvimento chamado Windows Forms, que permite a criação de interfaces gráficas de usuário (GUI) para aplicativos Windows.    
 
