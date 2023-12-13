@@ -2092,4 +2092,53 @@ private void label1_MouseLeave(object sender, EventArgs e)
 }
 ```
 
+## Manipulação de arquivos e pastas
+
+### Classe File
+ssa classe fornece métodos estáticos para a criação, cópia, exclusão, movimentação e abertura de arquivos, bem como métodos para recuperar informações sobre arquivos, como tamanho, data de criação e data de modificação.        
+
+**File.Exists(string path):** Verifica se um arquivo existe no caminho especificado.            
+```
+string filePath = @"C:\Exemplo\arquivo.txt";
+if (File.Exists(filePath))
+{
+    // Faz algo com o arquivo existente
+}
+```
+
+**File.Copy(string sourcePath, string destinationPath):** Copia um arquivo de um local para outro.            
+```
+string sourcePath = @"C:\Exemplo\arquivo.txt";
+string destinationPath = @"D:\Backup\arquivo_backup.txt";
+File.Copy(sourcePath, destinationPath);
+```
+
+**File.Delete(string path):** Exclui um arquivo.            
+```
+string filePath = @"C:\Exemplo\arquivo.txt";
+File.Delete(filePath);
+```            
+
+**File.Move(string sourcePath, string destinationPath):** Move um arquivo de um local para outro.            
+```
+string sourcePath = @"C:\Exemplo\arquivo.txt";
+string destinationPath = @"C:\Backup\arquivo.txt";
+File.Move(sourcePath, destinationPath);
+```
+
+**File.ReadAllLines(string path):** Lê todas as linhas de um arquivo de texto e retorna como uma matriz de strings.            
+```
+string filePath = @"C:\Exemplo\arquivo.txt";
+string[] lines = File.ReadAllLines(filePath);
+```
+
+**File.WriteAllText(string path, string contents):** Grava o conteúdo fornecido em um arquivo de texto, substituindo qualquer conteúdo existente.            
+```
+string filePath = @"C:\Exemplo\arquivo.txt";
+string content = "Este é o conteúdo do arquivo.";
+File.WriteAllText(filePath, content);
+```            
+
+
+
 
