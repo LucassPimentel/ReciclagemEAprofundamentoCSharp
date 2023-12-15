@@ -2137,8 +2137,112 @@ string[] lines = File.ReadAllLines(filePath);
 string filePath = @"C:\Exemplo\arquivo.txt";
 string content = "Este é o conteúdo do arquivo.";
 File.WriteAllText(filePath, content);
-```            
+```
 
+
+## LINQ - Language Integrated Query    
+O Language Integrated Query (LINQ) é uma poderosa extensão do C# que permite realizar consultas em fontes de dados diversas de forma integrada à linguagem. Ele foi introduzido no C# 3.0 e oferece uma maneira declarativa de expressar consultas em arrays, coleções, bancos de dados, XML e outros tipos de dados.  Ele é construído em torno de três componentes principais: operadores, expressões lambda e tipos de consulta.        
+
+### Operadores e Tipos de Consulta        
+ LINQ oferece diversos operadores para realizar consultas, como Where, Select, GroupBy, OrderBy, entre outros. Considere uma lista de objetos Produto:        
+ ```
+public class Produto
+{
+    public string Nome { get; set; }
+    public decimal Preco { get; set; }
+    public string Categoria { get; set; }
+}
+
+List<Produto> produtos = new List<Produto>
+{
+    new Produto { Nome = "Laptop", Preco = 1500, Categoria = "Eletrônicos" },
+    new Produto { Nome = "Mochila", Preco = 50, Categoria = "Acessórios" },
+    new Produto { Nome = "Mouse", Preco = 30, Categoria = "Eletrônicos" },
+    new Produto { Nome = "Livro", Preco = 20, Categoria = "Literatura" }
+};
+```
+    
+###  Consultas Complexas com Where, OrderBy e Select
+Vamos realizar uma consulta para obter produtos eletrônicos com preço superior a $100, ordenados pelo preço.            
+```
+var consulta = produtos
+    .Where(p => p.Categoria == "Eletrônicos" && p.Preco > 100)
+    .OrderBy(p => p.Preco)
+    .Select(p => new { p.Nome, p.Preco });
+
+foreach (var item in consulta)
+{
+    Console.WriteLine($"{item.Nome} - ${item.Preco}");
+}
+```
+
+**Sintaxe de consulta:**           
+
+```
+var consulta = from produto in produtos
+               where produto.Categoria == "Eletrônicos" && produto.Preco > 100
+               orderby produto.Preco
+               select new { produto.Nome, produto.Preco };
+
+foreach (var item in consulta)
+{
+    Console.WriteLine($"{item.Nome} - ${item.Preco}");
+}
+```
+
+### Consulta com GroupBy    
+Vamos agora agrupar os produtos por categoria e calcular a média de preço para cada categoria.            
+```
+var consultaGrupo = produtos
+    .GroupBy(p => p.Categoria)
+    .Select(g => new
+    {
+        Categoria = g.Key,
+        MediaPreco = g.Average(p => p.Preco)
+    });
+
+foreach (var grupo in consultaGrupo)
+{
+    Console.WriteLine($"{grupo.Categoria} - Média de Preço: ${grupo.MediaPreco:F2}");
+}
+```
+
+**Sintaxe de consulta:**           
+```
+var consultaGrupo = from produto in produtos
+                    group produto by produto.Categoria into g
+                    select new
+                    {
+                        Categoria = g.Key,
+                        MediaPreco = g.Average(p => p.Preco)
+                    };
+
+foreach (var grupo in consultaGrupo)
+{
+    Console.WriteLine($"{grupo.Categoria} - Média de Preço: ${grupo.MediaPreco:F2}");
+}
+```
+
+### Consulta em XML com Join
+Suponha que temos dados em XML representando pedidos e produtos. Podemos usar join para combinar esses dados.            
+```
+XElement pedidosXml = XElement.Parse("<pedidos><pedido id='1' produto='Laptop' quantidade='2'/><pedido id='2' produto='Mochila' quantidade='3'/></pedidos>");
+
+var consultaJoin = from pedido in pedidosXml.Elements("pedido")
+                   join produto in produtos on pedido.Attribute("produto").Value equals produto.Nome
+                   select new
+                   {
+                       PedidoID = pedido.Attribute("id").Value,
+                       Produto = produto.Nome,
+                       Quantidade = int.Parse(pedido.Attribute("quantidade").Value)
+                   };
+
+foreach (var item in consultaJoin)
+{
+    Console.WriteLine($"PedidoID: {item.PedidoID}, Produto: {item.Produto}, Quantidade: {item.Quantidade}");
+}
+```
+ 
 
 
 
